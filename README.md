@@ -11,9 +11,9 @@
 
 |   Team member   |   Git handle  |   Email   |
 |   --------    | ------- | --- |
-|   Keiler Collier  |   BirdmanRidesAgain   |   kaco1304@colorado.edu   |
-|   Anthony Konas   |   ??? |   Anthony.Konas@colorado.edu  |
-|   Ashley Judah    |   ??? |   Ashley.Hart@colorado.edu  |
+|   Keiler Collier  |   BirdmanRidesAgain	|   kaco1304@colorado.edu   |
+|   Anthony Konas   |   AnthonyK47	|   Anthony.Konas@colorado.edu  |
+|   Ashley Judah    |   AshleyHart12	|   Ashley.Hart@colorado.edu  |
 |   Sean Cunningham |   ??? |   sean.cunningham-2@colorado.edu  |
 
 ## Vision statement
