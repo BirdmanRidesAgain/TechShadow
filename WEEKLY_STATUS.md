@@ -4,7 +4,7 @@
 
 ### Sean
 - Added stories to trello covering Milestone 4 tasks and DB planning
-- reserached tools for wireframing and db relation design and visualization
+- researched tools for wireframing and db relation design and visualization
 
 ### Anthony
 
