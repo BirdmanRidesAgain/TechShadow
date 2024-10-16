@@ -1,10 +1,23 @@
-# Week 3 Updates
+# Team Progress Report
 
-## Team Progress Report
+## Week 4 Updates
+
+### Sean
+- Added stories to trello covering Milestone 4 tasks and DB planning
+- reserached tools for wireframing and db relation design and visualization
+
+### Anthony
+
+### Keiler
+
+### Ashley
+
+
+## Week 3 Updates
 
 ### Sean
 - Updated Trello board with current tasks
-- Tested repo permissions 
+- Tested repo permissions
 
 ### Anthony
 - Created a new test branch and merged PR
