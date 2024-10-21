@@ -1,7 +1,6 @@
 # Team Progress Report
 
-## Week 4 Updates
-
+## Week 5 updates
 ### Sean
 - Added stories to trello covering Milestone 4 tasks and DB planning
 - researched tools for wireframing and db relation design and visualization
@@ -11,7 +10,23 @@
 ### Keiler
 
 ### Ashley
+- Added parameters needed for each page
 
+
+## Week 4 Updates
+
+### Sean
+- Added stories to trello covering Milestone 4 tasks and DB planning
+- researched tools for wireframing and db relation design and visualization
+
+### Anthony
+
+
+### Keiler
+
+
+### Ashley
+- Created List of pages for our project
 
 ## Week 3 Updates
 
