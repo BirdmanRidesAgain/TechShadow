@@ -2,13 +2,11 @@
 
 ## Week 5 updates
 ### Sean
-- Added stories to trello covering Milestone 4 tasks and DB planning
-- researched tools for wireframing and db relation design and visualization
 
 ### Anthony
 
 ### Keiler
-- Learned basic html and css (in+outside of lab), as a prerequisite for being of any use here
+
 
 ### Ashley
 - Added parameters needed for each page
@@ -24,7 +22,7 @@
 
 
 ### Keiler
-
+- Learned basic html and css (in+outside of lab), as a prerequisite for being of any use here
 
 ### Ashley
 - Created List of pages for our project
