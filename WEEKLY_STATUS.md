@@ -8,6 +8,7 @@
 ### Anthony
 
 ### Keiler
+- Learned basic html and css (in+outside of lab), as a prerequisite for being of any use here
 
 ### Ashley
 - Added parameters needed for each page
