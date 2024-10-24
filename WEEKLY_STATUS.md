@@ -2,11 +2,12 @@
 
 ## Week 5 updates
 ### Sean
+- Filled out additional details on some of the database stories on trello
+- updated the links lists in the page_testing file
 
 ### Anthony
 
 ### Keiler
-
 
 ### Ashley
 - Added parameters needed for each page
