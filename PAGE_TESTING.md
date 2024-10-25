@@ -74,7 +74,7 @@
 - Test deleted opportunities no longer exist in the table
 
 **Mockup**
-![landing page](./Assets/update_page.png)
+![landing page](./Assets/update_page.jpeg)
 
 ---
 
@@ -236,7 +236,7 @@ ___
 - Test USer data accurately represented in table
 
 **Mockup**
-![landing page](./Assets/landing_page.png)
+![landing page](./Assets/login_page.png)
 
 ___
 
