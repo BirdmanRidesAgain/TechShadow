@@ -20,7 +20,8 @@
 - If user is not logged in, None
 
 **Data Needed:**
-- No data is needed to/from backend
+- No data is needed to/from backend if they are not logged in
+- username need from "User" table if they are logged in
 
 **Link Destinations:**
 - Navbar links
@@ -47,6 +48,8 @@
 - Action (edit sections as needed)
 
 **Data Needed:**
+- Will need to GET User related information from the "User" table.
+- Will need to GET Opportunities from the "Opportunities" table
 
 **Link Destinations:**
 - Navbar links
@@ -56,7 +59,7 @@
     - Signup: Signup Page
     - contact: Contact Page
 - In page links:
-    - "Update account" button: directs to signup page (reused for put requests for account update)
+    - "Update account" button: directs to update account page
 
 **List of Tests:**
 
@@ -72,28 +75,8 @@
 - Filters (parameters to search by role, location, date, times available, experience level)
 
 **Data Needed:**
-
-**Link Destinations:**
-- Navbar links
-    - Home: landing page
-    - Login: login page
-    - Shadow: Opportunities Page
-    - Signup: Signup Page
-    - contact: Contact Page
-- In page links: N/A
-**List of Tests:**
-
----
-
-# Page Four: Create an Opportunity Page
-**Title:** Create an Opportunity Page
-
-**Description:** A form where professionals can post new shadowing opportunities, including details like job role, location, times available, etc.
-**Parameters Needed:**
-- User ID (Identifies which use is creating the opportunity)
-- Form (Form to fill out information for available opportunity)
-
-**Data Needed:**
+- Will need to GET Opportunities from the "Opportunities" table
+- Will need to DELETE Opportunities from he "Opportunities" table (if they are created by the user)
 
 **Link Destinations:**
 - Navbar links
@@ -103,8 +86,35 @@
     - Signup: Signup Page
     - contact: Contact Page
 - In page links:
-    - "Submit opportunity" button: links to Opportunities page
-    
+    - No unpage links needed
+
+**List of Tests:**
+
+---
+
+# Page Four: Create an Opportunity Page
+**Title:** Create an Opportunity Page
+
+**Description:** A form where professionals can post new shadowing opportunities, including details like job role, location, times available, etc.
+
+**Parameters Needed:**
+- User ID (Identifies which use is creating the opportunity)
+- Form (Form to fill out information for available opportunity)
+
+**Data Needed:**
+- Will need to POST to create Opportunities to "Opportunities" table
+- Will need User ID to include in the "Opportunities" table
+
+**Link Destinations:**
+- Navbar links
+    - Home: landing page
+    - Login: login page
+    - Shadow: Opportunities Page
+    - Signup: Signup Page
+    - contact: Contact Page
+- In page links:
+    - "Submit opportunity" button: links to Opportunities page (after sending data to backend)
+
 **List of Tests:**
 
 ---
@@ -118,6 +128,8 @@
 - Form (for user to fill out to contact company)
 
 **Data Needed:**
+- Nothing needed FROM database
+- Will POST the users message to the "Contact Messages" table
 
 **Link Destinations:**
 - Navbar links
@@ -126,7 +138,8 @@
     - Shadow: Opportunities Page
     - Signup: Signup Page
     - contact: Contact Page
-- In page links: N/A
+- In page links:
+    - "Submit" button will send the contact message to the backend, user will stay on refreshed page
 
 **List of Tests:**
 
@@ -142,6 +155,7 @@ ___
 - Form (for user to fill out to login)
 
 **Data Needed:**
+- Will need to GET information from the "User" table to log user in
 
 **Link Destinations:**
 - Navbar links
@@ -151,14 +165,14 @@ ___
     - Signup: Signup Page
     - contact: Contact Page
 - In page links:
-    - "Submit form button": directs to account page is successful
+    - "Submit form button": directs to account page is successful after pushing info to backend
 **List of Tests:**
 
 ___
 
 
 # Page Seven: Signup Page
-**Title:** Login Page
+**Title:** Sign up Page
 
 **Description:** Simple page containing a sign up form that allows users to create an accounts. Automatically redirects to Account page once the user successfully logs in.
 
@@ -166,6 +180,7 @@ ___
 - Form (for user to fill out to create account)
 
 **Data Needed:**
+- Will need to POST information to the "User" table to create new users
 
 **Link Destinations:**
 - Navbar links
@@ -175,6 +190,31 @@ ___
     - Signup: Signup Page
     - contact: Contact Page
 - In page links:
-    - "Submit form button": directs to account page is successful
+    - "Submit form button": directs to account page if successful
+
+**List of Tests:**
+
+# Page Eight: Update Account Page
+**Title:** Update Account Page
+
+**Description:** A form page that allows user to updte their account information.
+
+**Parameters Needed:**
+- User ID (identifies which User's account page is being processed)
+- Action (edit sections as needed)
+
+**Data Needed:**
+- Will need to PUT User related information to update the "User" table.
+- Will need user ID
+
+**Link Destinations:**
+- Navbar links
+    - Home: landing page
+    - Login: login page
+    - Shadow: Opportunities Page
+    - Signup: Signup Page
+    - contact: Contact Page
+- In page links:
+    - "Update account" button: directs to update account page after sending info to backend
 
 **List of Tests:**
