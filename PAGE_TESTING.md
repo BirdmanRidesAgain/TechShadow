@@ -34,6 +34,7 @@
     - "I want to shadow someone" button: Opportunities Page
     - "I want to offer a shadow" button: Create Opportunity Page
 **List of Tests:**
+- test username loads correctly if user logged in
 
 ---
 
@@ -50,6 +51,7 @@
 **Data Needed:**
 - Will need to GET User related information from the "User" table.
 - Will need to GET Opportunities from the "Opportunities" table
+- Will need to DELETE Oportunites from the "Opportunities" table
 
 **Link Destinations:**
 - Navbar links
@@ -62,6 +64,10 @@
     - "Update account" button: directs to update account page
 
 **List of Tests:**
+- Test User data returned from backend is as expected based on user ID parameter
+- Test all user data returned and accurate
+- Test opportunities associated will user are returned from backend accurately
+- Test deleted opportunities no longer exist in the table
 
 ---
 
@@ -89,6 +95,11 @@
     - No unpage links needed
 
 **List of Tests:**
+- Test get all opportunities requests returns correct number of opportunities
+- Test all opportunity data is returned correctly and as expected
+- Test filters/sorts return or present (depending on whether handled in front or backend) accurately
+- Test "Search" functionality returns all matching opportunities as expected (by count)
+- Test "Search" functionality does not return too many opportunites than expected (by count)
 
 ---
 
@@ -116,6 +127,9 @@
     - "Submit opportunity" button: links to Opportunities page (after sending data to backend)
 
 **List of Tests:**
+- Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
+- Test posted data is present and accurate in "Opportunities" table as expected
+- Test Opportunity is associated with the correct posting user in table
 
 ---
 
@@ -129,7 +143,7 @@
 
 **Data Needed:**
 - Nothing needed FROM database
-- Will POST the users message to the "Contact Messages" table
+- Will POST the users message to the "Contact_Messages" table
 
 **Link Destinations:**
 - Navbar links
@@ -142,6 +156,8 @@
     - "Submit" button will send the contact message to the backend, user will stay on refreshed page
 
 **List of Tests:**
+- Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
+- Test posted data is present and accurate in "Contact_Messages" table as expected
 
 ___
 
@@ -167,6 +183,9 @@ ___
 - In page links:
     - "Submit form button": directs to account page is successful after pushing info to backend
 **List of Tests:**
+- Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
+- Test request checks password and logs user in if username pass correct
+- Test wrong username or password fails to login or get user past login wall
 
 ___
 
@@ -193,6 +212,9 @@ ___
     - "Submit form button": directs to account page if successful
 
 **List of Tests:**
+- Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
+- Test user new User created in User table
+- Test USer data accurately represented in table
 
 # Page Eight: Update Account Page
 **Title:** Update Account Page
@@ -200,7 +222,7 @@ ___
 **Description:** A form page that allows user to updte their account information.
 
 **Parameters Needed:**
-- User ID (identifies which User's account page is being processed)
+- User ID (identifies which Users account page is being processed)
 - Action (edit sections as needed)
 
 **Data Needed:**
@@ -218,3 +240,5 @@ ___
     - "Update account" button: directs to update account page after sending info to backend
 
 **List of Tests:**
+- Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
+- Test updated data is present and accurate in "Accounts" table as expected
