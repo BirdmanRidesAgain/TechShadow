@@ -1,9 +1,24 @@
 # Team Progress Report
 
+## Week 6 updates
+### Sean
+- Created list of test needed for each page
+- Created link list for each page view
+- Determined data needed for each page view
+- Updated trello cards
+
+### Anthony
+
+### Keiler
+
+### Ashley
+- Added mockup images
+- Updated Weekly Status
+
 ## Week 5 updates
 ### Sean
 - Filled out additional details on some of the database stories on trello
-- updated the links, data, tests lists in the page_testing file
+- Updated the links, data, tests lists in the page_testing file
 
 ### Anthony
 
