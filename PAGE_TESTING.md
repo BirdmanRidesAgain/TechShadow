@@ -33,6 +33,7 @@
 - In page links:
     - "I want to shadow someone" button: Opportunities Page
     - "I want to offer a shadow" button: Create Opportunity Page
+
 **List of Tests:**
 - test username loads correctly if user logged in
 
