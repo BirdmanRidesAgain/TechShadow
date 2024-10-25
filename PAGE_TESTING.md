@@ -37,6 +37,9 @@
 **List of Tests:**
 - test username loads correctly if user logged in
 
+**Mockup**
+![landing page](./Assets/landing_page.png)
+
 ---
 
 # Page Two: Account Page
@@ -70,6 +73,9 @@
 - Test opportunities associated will user are returned from backend accurately
 - Test deleted opportunities no longer exist in the table
 
+**Mockup**
+![landing page](./Assets/update_page.png)
+
 ---
 
 # Page Three: Opportunities Page
@@ -102,6 +108,9 @@
 - Test "Search" functionality returns all matching opportunities as expected (by count)
 - Test "Search" functionality does not return too many opportunites than expected (by count)
 
+**Mockup**
+![landing page](./Assets/opportunities_page.png)
+
 ---
 
 # Page Four: Create an Opportunity Page
@@ -132,6 +141,9 @@
 - Test posted data is present and accurate in "Opportunities" table as expected
 - Test Opportunity is associated with the correct posting user in table
 
+**Mockup**
+![landing page](./Assets/create_page.png)
+
 ---
 
 # Page Five: Contact Page
@@ -160,6 +172,9 @@
 - Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
 - Test posted data is present and accurate in "Contact_Messages" table as expected
 
+**Mockup**
+![landing page](./Assets/contact_page.png)
+
 ___
 
 
@@ -187,6 +202,9 @@ ___
 - Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
 - Test request checks password and logs user in if username pass correct
 - Test wrong username or password fails to login or get user past login wall
+
+**Mockup**
+![landing page](./Assets/login_page.png)
 
 ___
 
@@ -217,6 +235,11 @@ ___
 - Test user new User created in User table
 - Test USer data accurately represented in table
 
+**Mockup**
+![landing page](./Assets/landing_page.png)
+
+___
+
 # Page Eight: Update Account Page
 **Title:** Update Account Page
 
@@ -243,3 +266,6 @@ ___
 **List of Tests:**
 - Test required data is sent (required form fields not blank)(forms will all include front end validation as well)
 - Test updated data is present and accurate in "Accounts" table as expected
+
+**Mockup**
+![landing page](./Assets/update_page.jpeg)
