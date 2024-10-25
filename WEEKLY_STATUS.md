@@ -26,6 +26,7 @@
 
 ### Ashley
 - Added parameters needed for each page
+- Added page title and description for each page
 
 
 ## Week 4 Updates
