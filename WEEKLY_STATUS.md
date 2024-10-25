@@ -3,7 +3,7 @@
 ## Week 5 updates
 ### Sean
 - Filled out additional details on some of the database stories on trello
-- updated the links lists in the page_testing file
+- updated the links, data, tests lists in the page_testing file
 
 ### Anthony
 
