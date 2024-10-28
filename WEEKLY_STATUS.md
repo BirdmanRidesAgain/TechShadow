@@ -1,5 +1,18 @@
 # Team Progress Report
 
+## Week 7 updates
+
+### Sean
+- create SQL_TESTING.md document with outline
+
+### Anthony
+
+### Keiler
+
+### Ashley
+- Added mockup images
+- Updated Weekly Status
+
 ## Week 6 updates
 ### Sean
 - Created list of test needed for each page
