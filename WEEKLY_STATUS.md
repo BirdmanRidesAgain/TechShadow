@@ -3,11 +3,12 @@
 ## Week 7 updates
 
 ### Sean
-- create SQL_TESTING.md document with outline
+- create `SQL_TESTING.md` document with outline
 
 ### Anthony
 
 ### Keiler
+- Filled out 'Table 1 - Users' in `SQL_TESTING.md`
 
 ### Ashley
 - Added mockup images
@@ -23,6 +24,7 @@
 ### Anthony
 
 ### Keiler
+- Edited link data in `PAGE_TESTING.md`
 
 ### Ashley
 - Added mockup images
@@ -31,7 +33,7 @@
 ## Week 5 updates
 ### Sean
 - Filled out additional details on some of the database stories on trello
-- Updated the links, data, tests lists in the page_testing file
+- Updated the links, data, tests lists in the `PAGE_TESTING.md`
 
 ### Anthony
 
