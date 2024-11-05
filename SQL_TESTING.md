@@ -73,38 +73,71 @@ Stores metadata about all registered users.
     - Return Values: Tab-separated string containing `username`, `first_name`, `last_name`, `is_mentor`, `is_shadower` and `field`. All strings should be quoted to prevent strange behavior.
 
 # Table Two: Opportunities
-**Table Name:**
+**Table Name:** Opportunities
 
 **Table Description:**
+Stores data about open shadowing opportunities
 
 **Table Fields:**
-- Field 1:
-    - Name:
-    - Description:
+- Field 1: 
+    - Name: `opportunityID`
+    - Description: Integer; unique identifier for each opportunity (primary key)
 - Field 2:
-    - Name:
-    - Description:
+    - Name: `position`
+    - Description: String; job title or position name for the shadowing opportunity (e.g., "Software Developer")
 - Field 3:
-    - Name:
-    - Description:
+    - Name: `job_description`
+    - Description: String; a brief description of the position, outlining responsibilities and expectations
+- Field 4:
+    - Name: `is_remote`
+    - Description: Boolean; indicates if the opportunity is remote
+- Field 5:
+    - Name: `is_in_person`
+    - Description: Boolean; indicates if the opportunity is in-person
+- Field 6:
+    - Name: `status`
+    - Description: String; represents the status of the opportunity (open, pending, or closed). Only open opportunities should be visible on the webpage.
+- Field 7:
+    - Name: `required_skills`
+    - Description: String; list of relevant skills or keywords for the opportunity (e.g., "Python, SQL, Machine Learning") to facilitate search matching.
+- Field 8:
+    - Name: `location`
+    - Description: String; location of the opportunity for in-person roles (e.g., "New York, NY"), which could also serve as a filter.
+
 
 **List of Tests to verify table:**
-- Test 1:
-- Test 2:
+- Test 1: Ensure `opportunityID` is unique and non-null
+- Test 2: Verify that `only` open opportunities are displayed in listings by default
+- Test 3: Check that both `is_remote` and `is_in_person` cannot be true at the same time.
+- Test 4: Validate that `position` and `job_description` fields accept text entries without exceeding character limits
+- Test 5: Ensure `required_skills` field supports comma-separated values and performs keyword-based search correctly.
+- Test 6: Verify filtering options allow querying by `is_remote`, `is_in_person`, `status`, and `location`.
 
 **Data Access Methods**
 - Method 1:
-    - Name: 
-    - Description:
-    - Parameters:
-    - Return Values:
+    - Name: `get_available_opportunities`
+    - Description: Retrieves all `open` opportunities, optionally filtered by `is_remote`, `is_in_person`, and `location`
+    - Parameters: Optional filters (`is_remote`, `is_in_person`, `location`)
+    - Return Values: List of available opportunities including `opportunityID`, `position`, `job_description`, and `status`
     - List of tests for verifying each access method:
+        - Test 1: Verify correct filtering based on `is_remote`, `is_in_person`, and `location`.
+        - Test 2: Ensure only `open` opportunities are returned.
 - Method 2:
-    - Name:
-    - Description:
-    - Parameters:
-    - Return Values:
+    - Name: `search_opportunities_by_skill`
+    - Description: Retrieves opportunities based on a search query for specific skills.
+    - Parameters: `skill_query` (string of keywords).
+    - Return Values: List of matching opportunities with relevant fields
     - List of tests for verifying each access method:
+        - Test 1: Check that search results correctly match entries in `required_skills`
+        - Test 2: Verify performance with multiple search keywords
+- Method 3:
+    - Name: `get_opportunity_details`
+    - Description: Retrieves detailed information for a specific opportunity
+    - Parameters: `opportunityID`
+    - Return Values: All fields for the specified opportunity
+    - List of tests for verifying each access method:
+        - Test 1: Validate that the correct opportunity details are returned based on `opportunityID`
+        - Test 2: Confirm `opportunityID` entries are correctly cross-referenced with user access permissions if needed
 
 # Table Three: Contact Messages
 **Table Name:** 
