@@ -11,8 +11,7 @@
 - Filled out 'Table 1 - Users' in `SQL_TESTING.md`
 
 ### Ashley
-- Added mockup images
-- Updated Weekly Status
+- Filled out 'Table 3 - Contact Messages' in `SQL_TESTING.md`
 
 ## Week 6 updates
 ### Sean
