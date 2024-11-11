@@ -19,10 +19,8 @@
 ### Anthony
 
 ### Keiler
-- Filled out 'Table 1 - Users' in `SQL_TESTING.md`
 
 ### Ashley
-- Filled out 'Table 3 - Contact Messages' in `SQL_TESTING.md`
 
 ## Week 7 updates
 
