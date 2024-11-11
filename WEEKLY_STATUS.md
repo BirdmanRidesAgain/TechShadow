@@ -1,5 +1,29 @@
 # Team Progress Report
 
+## Week 9 updates
+
+### Sean
+- worked with Anthony and created app architecture and basic CRUD routes
+
+### Anthony
+
+### Keiler
+
+### Ashley
+
+## Week 8 updates
+
+### Sean
+- created database diagram
+
+### Anthony
+
+### Keiler
+- Filled out 'Table 1 - Users' in `SQL_TESTING.md`
+
+### Ashley
+- Filled out 'Table 3 - Contact Messages' in `SQL_TESTING.md`
+
 ## Week 7 updates
 
 ### Sean
