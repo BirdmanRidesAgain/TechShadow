@@ -1,17 +1,20 @@
 :root {
-    --main-purple: #7b94fd;
+    --main-purple: #6754f2;
     --secondary-purple: #f2f4ff;
     --dark-purple: #928ace;
-    --darkest-purple: #5a299c;
     --text-color: #505050;
 }
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: var(--text-color);
     background-color: #fff;
+    line-height: 1.5;
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
 }
 
 header {
@@ -19,13 +22,14 @@ header {
     padding: 20px;
 }
 
+h1 {
+  font-size: 48px;
+  font-weight: 300;
+}
+
 .main_purple {
     color: var(--main-purple);
 }
-
-/* .content {
-    padding: 20px;
-} */
 
 .top-column {
     display: flex;
@@ -33,6 +37,11 @@ header {
     align-items: center;
     gap: 20px;
     margin: 30px;
+}
+
+.text-column ul li {
+  text-align: left;
+  list-style-type: disc;
 }
 
 .text-column,
@@ -44,6 +53,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 20px;
 }
 
 .image-column img {
@@ -53,7 +63,8 @@ header {
 
 .cards {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 100px;
     margin: 50px 0px;
     padding: 50px;
     background-color: var(--secondary-purple);
@@ -63,19 +74,23 @@ header {
     background-color: #fff;
     border-radius: 10px;
     padding: 15px;
-    width: 100%;
+    width: 300px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     max-height: 350px;
     cursor: pointer;
 }
 
+.card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
 .card img {
-    width: 300px;
+    width: 275px;
     height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -83,7 +98,7 @@ header {
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 50px;
     background-color: var(--main-purple);
 }
 
@@ -119,7 +134,7 @@ footer p {
     position: absolute;
     top: 10px;
     transform: translate(-50%, -50%);
-    background-color: var(--darkest-purple);
+    background-color: var(--dark-purple);
     z-index: 1000;
   }
   
@@ -163,7 +178,7 @@ footer p {
     top: -70px;
     left: 100;
     right: -70px;
-    background-color: var(--darkest-purple);
+    background-color: var(--dark-purple);
     border-radius: 50%;
     z-index: 1;
     padding: 100px;
@@ -259,7 +274,7 @@ footer p {
 
   .submit-btn {
     padding: 10px 20px;
-    background-color: var(--darkest-purple);
+    background-color: var(--dark-purple);
     color: white;
     border: none;
     border-radius: 4px;
@@ -270,12 +285,5 @@ footer p {
   }
 
   .submit-btn:hover {
-    background-color: var(--dark-purple);
-    color: var(--secondary-purple)
-  }
-
-  .thank-you-message {
-    font-size: 18px;
-    color: var(--darkest-purple);
-    display: none;
+    background-color: var(--main-purple);
   }
