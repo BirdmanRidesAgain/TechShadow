@@ -1,9 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<header>
+<!-- <header>
   <h1 class="main_purple">Contact Us</h1>
-</header>
+</header> -->
 
+<div class="contact-div">
+  <div class="contact-container">
+    <div class="heading">
+      Drop us a line
+      <div class="fishing-pole"></div>
+    </div>
+
+    <form action="mailto:asha9326@colorado.edu" method="post" enctype="text/plain" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+</div>
 
 {% endblock %}

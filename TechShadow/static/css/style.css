@@ -192,3 +192,90 @@ footer p {
   .navbar-menu ul li a:hover {
     color: #f39c12;
   }
+
+
+  /* CONTACT US */
+  .contact-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .contact-container {
+    width: 75%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  /* Heading with Fishing Pole Effect */
+  .heading {
+    position: relative;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .heading:hover .fishing-pole {
+    opacity: 1;
+    transform: rotate(-10deg);
+  }
+
+  /* Fishing Pole */
+  .fishing-pole {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+    width: 50px;
+    height: 100px;
+    background: url('https://img.icons8.com/emoji/48/000000/fishing-pole.png') no-repeat center center;
+    background-size: contain;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+  }
+
+  /* Form Styles */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input, textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .submit-btn {
+    padding: 10px 20px;
+    background-color: var(--darkest-purple);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: fit-content;
+  }
+
+  .submit-btn:hover {
+    background-color: var(--dark-purple);
+    color: var(--secondary-purple)
+  }
+
+  .thank-you-message {
+    font-size: 18px;
+    color: var(--darkest-purple);
+    display: none;
+  }
