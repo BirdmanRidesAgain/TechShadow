@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechShadow</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='javascript/rename_this_file.js') }}"></script>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <script src="../static/javascript/rename_this_file.js"></script>
 </head>
 <body>
     <header>
@@ -13,7 +13,7 @@
     </header>
 
     <section class="content">
-        <div class="columns">
+        <div class="top-column">
             <div class="text-column">
                 <h2>Learn & Grow</h2>
                 <p>Tech Shadow provides a platform for professionals and aspiring tech enthusiasts to connect and grow together.</p>
@@ -24,19 +24,19 @@
         </div>
 
         <div class="cards">
-            <div class="card">
-                <h3>Explore Shadow Opportunities</h3>
-                <img src="../static/assets/shadow.png" alt="Card Image">
+            <div class="card" onclick="window.location.href='shadows.html'">
+                <h2>Explore Shadow Opportunities</h2>
+                <img src="../static/assets/shadow2.jpg" alt="Card Image">
             </div>
             <div class="card">
-                <h3>Sign up to offer a shadow Opportunity</h3>
+                <h2>Sign up to offer a shadow Opportunity</h2>
                 <img src="../static/assets/online-learning.jpg" alt="Card Image">
             </div>
         </div>
     </section>
 
     <footer>
-        <p class="main_purple">&#169; University of Colorado CSPB Program, 2024</p>
+        <p>&#169; University of Colorado CSPB Program, 2024</p>
     </footer>
 </body>
 </html>
