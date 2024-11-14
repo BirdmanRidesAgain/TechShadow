@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShadow</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='javascript/rename_this_file.js') }}"></script>
-</head>
-<body>
-    <div class="test">Create Shadow page</div>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+
+<header>
+    <h1 class="main_purple">Thank you for being a leader!</h1>
+</header>
+
+{% endblock %}

@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShadow</title>
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <script src="../static/javascript/rename_this_file.js"></script>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+
     <header>
         <h1 class="main_purple">Tech Shadow</h1>
     </header>
 
-    <section class="content">
+
         <div class="top-column">
             <div class="text-column">
                 <h2>Learn & Grow</h2>
@@ -24,19 +17,14 @@
         </div>
 
         <div class="cards">
-            <div class="card" onclick="window.location.href='shadows.html'">
+            <div class="card" onclick="window.location.href='/shadows'">
                 <h2>Explore Shadow Opportunities</h2>
                 <img src="../static/assets/shadow2.jpg" alt="Card Image">
             </div>
-            <div class="card">
+            <div class="card" onclick="window.location.href='/create_shadow'">
                 <h2>Sign up to offer a shadow Opportunity</h2>
                 <img src="../static/assets/online-learning.jpg" alt="Card Image">
             </div>
         </div>
-    </section>
 
-    <footer>
-        <p>&#169; University of Colorado CSPB Program, 2024</p>
-    </footer>
-</body>
-</html>
+{% endblock %}
