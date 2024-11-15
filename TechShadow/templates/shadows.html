@@ -1,13 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<header>
-    <h1 class="main_purple">Browse Shadow Opportunities</h1>
+<header class="search-header">
+    <h1>Browse Shadow Opportunities</h1>
+    <img alt="illustration" src="../static/assets/search.jpeg" class="search-img" >
 </header>
 
-<div class="shadows">
-    <p>{{ shadows }}</p> 
+<div class="shadows-container">
+    {% for opportunity in shadows %}
+        <div class="shadow-item {% if loop.index % 2 == 0 %}alt-bg{% endif %}">
+            <div class="shadow-inner">
+                <div class="shadow-item-content">
+                    <div class="shadow-item-header">
+                        <h2 class="job-name">{{ opportunity.position }}</h2>
+                        <p class="location">{{ opportunity.location }}</p>
+                    </div>
+                    <div class="status">
+                        <span class="status-text">{{ opportunity.status }}</span>
+                    </div>
+                    <div class="description">
+                        <p>{{ opportunity.job_description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
-
 
 {% endblock %}
