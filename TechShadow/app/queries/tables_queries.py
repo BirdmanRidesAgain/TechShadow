@@ -1,28 +1,11 @@
 import psycopg2
 from psycopg2 import sql
-from ts_app import test_env
-
-
-def tables():
-    return test_env
-
-# Connect to PostgreSQL
-def create_connection():
-    try:
-        conn = psycopg2.connect(
-            dbname="techshadowdb",
-            user="techshadowdb_user",
-            password="tftK4LBskh1w2cIjfQny5OG0vTBZkKZe",
-            host="dpg-csq1s1dds78s73ddsfpg-a.oregon-postgres.render.com",
-            port="5432"
-        )
-        print("Connection successful!")
-    except Exception as e:
-        print("An error occurred:", e)
+from tsdb import create_connection
 
 # Function to create tables
-def create_tables(conn):
+def create_tables():
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             # Table 1: Users
             cur.execute("""
@@ -69,9 +52,5 @@ def create_tables(conn):
             print("Tables created successfully")
     except Exception as e:
         print(f"An error occurred while creating tables: {e}")
-
-if __name__ == "__main__":
-    conn = create_connection()
-    if conn:
-        create_tables(conn)
+    finally:
         conn.close()

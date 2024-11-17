@@ -1,2 +1,3 @@
 # Git should ignore all files beginning with 'test'
 test*
+*env*
