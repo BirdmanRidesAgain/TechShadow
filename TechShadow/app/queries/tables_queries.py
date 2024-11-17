@@ -1,5 +1,10 @@
 import psycopg2
 from psycopg2 import sql
+from ts_app import test_env
+
+
+def tables():
+    return test_env
 
 # Connect to PostgreSQL
 def create_connection():
@@ -9,7 +14,7 @@ def create_connection():
             user="techshadowdb_user",
             password="tftK4LBskh1w2cIjfQny5OG0vTBZkKZe",
             host="dpg-csq1s1dds78s73ddsfpg-a.oregon-postgres.render.com",
-            port="5432" 
+            port="5432"
         )
         print("Connection successful!")
     except Exception as e:
