@@ -2,6 +2,7 @@ import psycopg2
 from psycopg2 import sql
 from tsdb import create_connection
 
+
 # Function to create tables
 def create_tables():
     try:
@@ -54,3 +55,4 @@ def create_tables():
         print(f"An error occurred while creating tables: {e}")
     finally:
         conn.close()
+        return "create tables"
