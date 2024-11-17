@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header class="contact-header">
+  <h1>Still have Questions?</h1>
+  <img alt="women searching" src="../static/assets/contact.jpg" class="header-img">
+</header>
+
+<div class="contact-div">
+  <div class="contact-container">
+    <form action="mailto:asha9326@colorado.edu" method="post" enctype="text/plain" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

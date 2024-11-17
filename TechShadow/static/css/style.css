@@ -1,5 +1,350 @@
-/* add css here */
+:root {
+    --main-purple: #6754f2;
+    --secondary-purple: #f2f4ff;
+    --dark-purple: #928ace;
+    --text-color: #505050;
+}
 
 body {
-    color: blue;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: #fff;
+    line-height: 1.5;
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--main-purple);
+
+}
+
+.main_purple {
+    color: var(--main-purple);
+}
+
+.top-column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 30px;
+}
+
+.text-column ul li {
+  text-align: left;
+  list-style-type: disc;
+}
+
+.text-column,
+.image-column {
+    flex: 1;
+}
+
+.text-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-column img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin: 50px 0px;
+    padding: 50px;
+    background-color: var(--secondary-purple);
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    max-height: 350px;
+    cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.card img {
+    width: 275px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--main-purple);
+}
+
+footer p {
+    color: #fff;
+}
+
+
+/* NAVBAR */
+
+/* General Navbar container */
+.navbar-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  /* Half-circle button (collapsed state) */
+  .navbar-button {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px 30px 0 0;
+    background-color: var(--main-purple);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* Lines in the button to represent the navbar toggle */
+  .navbar-toggle-icon {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark-purple);
+    z-index: 1000;
+  }
+  
+  .line {
+    width: 30px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    border-radius: 2px;
+  }
+  
+  /* The input checkbox controls the state of the navbar (open/close) */
+  .navbar-toggle-checkbox {
+    display: none;
+  }
+  
+  .navbar-toggle-checkbox:checked ~ .navbar-menu {
+    display: block;
+  }
+  
+  /* When checked, the half-circle becomes a rounded square and the lines move */
+  .navbar-toggle-checkbox:checked ~ .navbar-container .navbar-button {
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    background-color: var(--main-purple);
+  }
+  
+  .navbar-toggle-checkbox:checked ~ .navbar-container .navbar-button .navbar-toggle-icon {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .navbar-toggle-checkbox:checked ~ .navbar-container .navbar-button .line {
+    margin: 8px 0;
+  }
+  
+  /* Navbar Menu (hidden by default) */
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: -85px;
+    left: 100;
+    right: -75px;
+    background-color: var(--dark-purple);
+    border-radius: 50%;
+    z-index: 1;
+    padding: 100px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 175px;
+    width: 175px;
+  }
+  
+  .navbar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar-menu ul li {
+    margin: 15px 0;
+  }
+  
+  .navbar-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-menu ul li a:hover {
+    color: #f39c12;
+  }
+
+
+  /* CONTACT US */
+  .contact-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
+
+  .contact-container {
+    width: 75%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  /* Form Styles */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input, textarea {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid var(--main-purple);
+    font-size: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+    border: 1px solid var(--main-purple);
+  }
+
+  .submit-btn {
+    padding: 10px 20px;
+    background-color: var(--dark-purple);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: fit-content;
+  }
+
+  .submit-btn:hover {
+    background-color: var(--main-purple);
+  }
+
+
+  .contact-header, .search-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; 
+    margin-bottom: 50px;
+  }
+
+  .header-img, .search-img {
+    width: 200px; 
+    height: auto;
+    object-fit: cover;
+  }
+
+
+/* SHADOWS PAGE */
+.shadows-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shadow-item {
+  margin: 10px 0; 
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.shadow-item.alt-bg {
+  background-color: var(--secondary-purple);
+  color: white; 
+}
+
+.shadow-item-content {
+  width: 75%; 
+  margin: 0 auto; 
+  background-color: inherit;
+}
+
+.shadow-item-header {
+  margin-bottom: 10px;
+  display: flex;  
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.job-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--main-purple)
+}
+
+.location {
+  font-size: 1rem;
+  color: gray;
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--main-purple)
+}
+
+.status-text {
+  font-weight: bold;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.shadows .shadow-item p {
+  margin: 0;
+  padding: 5px 0;
 }

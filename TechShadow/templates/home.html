@@ -1,13 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShadow</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='javascript/rename_this_file.js') }}"></script>
-</head>
-<body>
-    <div class="test">Home Page</div>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+
+    <header>
+        <h1>Tech Shadow</h1>
+    </header>
+
+
+        <div class="top-column">
+            <div class="text-column">
+                <h2>Who are we?</h2>
+                <p>Tech Shadow is a platform connecting aspiring tech professionals with real-world shadowing opportunities. Users can browse roles in the tech industry, gain insights, and connect with mentors offering a “day in the life” experience.</p>
+                <ul>
+                    <li>Discover diverse tech roles across various fields and specialties</li>
+                    <li>Connect with experienced professionals willing to share their daily workflows</li>
+                    <li>Gain hands-on insight to guide your career decisions</li>
+                </ul>
+            </div>
+            <div class="image-column">
+                <img src="../static/assets/working_together.jpg" alt="Tech Shadow">
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card" onclick="window.location.href='/shadows'">
+                <h2>Explore Shadow Opportunities</h2>
+                <img src="../static/assets/shadow2.jpg" alt="Card Image">
+            </div>
+            <div class="card" onclick="window.location.href='/create_shadow'">
+                <h2>Sign up to offer a shadow Opportunity</h2>
+                <img src="../static/assets/online-learning.jpg" alt="Card Image">
+            </div>
+        </div>
+
+{% endblock %}

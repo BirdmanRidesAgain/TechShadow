@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TechShadow</title>
+      <link rel="stylesheet" href="../static/css/style.css" />
+      <script src="../static/javascript/rename_this_file.js"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+<!-- Navbar Button: Half Circle -->
+<div class="navbar-container">
+  <label for="navbar-toggle" class="navbar-button">
+    <div class="navbar-half-circle">
+      <div class="navbar-toggle-icon">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+      </div>
+    </div>
+  </label>
+
+  <!-- Hidden Checkbox to control the open/close -->
+  <input type="checkbox" id="navbar-toggle" class="navbar-toggle-checkbox">
+
+  <!-- Navbar Menu -->
+  <div class="navbar-menu">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/shadows">Shadows</a></li>
+      <li><a href="#">Account</a></li>
+      <li><a href="/contact-us">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+    <section class="content">
+      {% block content %}{% endblock %}
+    </section>
+
+    <footer>
+      <p>&#169; University of Colorado CSPB Program, 2024</p>
+    </footer>
+  </body>
+</html>
