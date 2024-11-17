@@ -15,6 +15,7 @@ def create_connection():
     except Exception as e:
         print("An error occurred:", e)
 
+
 # Function to create tables
 def create_tables(conn):
     try:
