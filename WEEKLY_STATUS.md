@@ -7,6 +7,8 @@
 
 ### Anthony
 
+- Worked with Sean on the app architecture and CRUD routes
+
 ### Keiler
 
 ### Ashley
@@ -28,6 +30,7 @@
 - create `SQL_TESTING.md` document with outline
 
 ### Anthony
+- Filled out 'Table 2 - Users' in `SQL_TESTING.md`
 
 ### Keiler
 - Filled out 'Table 1 - Users' in `SQL_TESTING.md`
@@ -58,6 +61,7 @@
 
 ### Anthony
 
+
 ### Keiler
 
 ### Ashley
@@ -72,7 +76,7 @@
 - researched tools for wireframing and db relation design and visualization
 
 ### Anthony
-
+- Worked through the html and css lab for assistance with the project
 
 ### Keiler
 - Learned basic html and css (in+outside of lab), as a prerequisite for being of any use here
