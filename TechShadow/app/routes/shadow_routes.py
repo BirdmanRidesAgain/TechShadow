@@ -2,9 +2,9 @@ from flask import request, render_template
 from ts_app import app
 from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow
 
-@app.route('/shadows')  
+@app.route('/shadows', methods=["GET"])
 def shadow():
-    shadows = get_shadows() 
+    shadows = get_shadows()
     return render_template('shadows.html', shadows=shadows)
 
 
