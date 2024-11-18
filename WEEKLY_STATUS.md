@@ -1,12 +1,24 @@
 # Team Progress Report
 
+## Week 10 updates
+
+### Sean
+- worked with Anthony and created app architecture and basic CRUD routes
+
+### Anthony
+- Finished drafting the table routes after Ashley built out the table queries page
+
+### Keiler
+
+### Ashley
+- Built out the table queries page
+
 ## Week 9 updates
 
 ### Sean
 - worked with Anthony and created app architecture and basic CRUD routes
 
 ### Anthony
-
 - Worked with Sean on the app architecture and CRUD routes
 
 ### Keiler
@@ -19,6 +31,7 @@
 - created database diagram
 
 ### Anthony
+- began to build out table routes
 
 ### Keiler
 
@@ -46,6 +59,7 @@
 - Updated trello cards
 
 ### Anthony
+- Was traveling overseas, couldn't assist this week
 
 ### Keiler
 - Edited link data in `PAGE_TESTING.md`
@@ -60,7 +74,7 @@
 - Updated the links, data, tests lists in the `PAGE_TESTING.md`
 
 ### Anthony
-
+- Worked on the flask tutorial lab
 
 ### Keiler
 
