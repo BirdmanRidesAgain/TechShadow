@@ -1,3 +1,4 @@
+from flask import jsonify
 from ts_app import app
 from queries.tables_queries import create_tables
 

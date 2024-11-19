@@ -3,6 +3,7 @@ from psycopg2 import sql
 from tsdb import create_connection
 
 
+
 # Function to create tables
 def create_tables():
     try:
