@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from ts_app import app
 from queries.user_queries import get_users, get_user, create_user, update_user, delete_user
 
@@ -10,7 +10,8 @@ def get_all_users():
 
 @app.route("/user", methods=["POST"])
 def post_user():
-    return create_user()
+    data = request.get_json()
+    return create_user(data)
 
 
 @app.route("/user/<int:user_id>", methods=["GET", "PUT", "DELETE"])
@@ -18,6 +19,8 @@ def get_one_user(user_id):
     if request.method == "GET":
         return get_user(user_id)
     elif request.method == "PUT":
-        return update_user(user_id)
+        data = request.get_json()
+        return update_user(user_id, data)
+
     elif request.method == "DELETE":
         return delete_user(user_id)
