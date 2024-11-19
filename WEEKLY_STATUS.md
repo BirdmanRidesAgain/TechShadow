@@ -24,6 +24,7 @@
 ### Keiler
 
 ### Ashley
+- Set up templating system, started buikd out of frontend
 
 ## Week 8 updates
 
@@ -36,6 +37,7 @@
 ### Keiler
 
 ### Ashley
+- Started set up of frontend pages
 
 ## Week 7 updates
 
