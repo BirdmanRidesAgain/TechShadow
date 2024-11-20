@@ -71,7 +71,7 @@ def create_user(data):
             user_id = cur.fetchone()[0]
             conn.commit()
             print(f"Successfully created user {user_id}")
-            return {"userID": user_id}
+            return jsonify({"userID": user_id})
     except Exception as e:
         return f"error: {e}"
     finally:

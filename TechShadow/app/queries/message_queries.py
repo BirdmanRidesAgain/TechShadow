@@ -62,7 +62,7 @@ def create_message(data):
             message_id = cur.fetchone()[0]
             conn.commit()
             print(f"Successfully created message {message_id}")
-            return message_id
+            return jsonify({"message_id": message_id})
     except Exception as e:
         return f"error: {e}"
     finally:

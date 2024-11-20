@@ -93,7 +93,7 @@ def create_shadow(data):
             shadow_id = cur.fetchone()[0]
             conn.commit()
             print(f"Successfully created shadow {shadow_id}")
-            return {"shadowID": shadow_id}
+            return jsonify({"shadowID": shadow_id})
     except Exception as e:
         return f"error: {e}"
     finally:
