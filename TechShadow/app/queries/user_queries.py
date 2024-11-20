@@ -5,6 +5,7 @@ from flask import jsonify
 
 def get_users():
     conn = create_connection()
+    print(type(conn))
     try:
         with conn.cursor() as cur:
             cur.execute("SELECT * FROM Users;")
