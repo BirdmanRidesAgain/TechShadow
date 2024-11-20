@@ -56,12 +56,21 @@ def create_user(data):
             cur.execute(
                 """
                 INSERT INTO users (username, password, first_name, last_name, is_mentor, is_shadower, field)
-                VALUES (%s, %s, %s, %s, %s, %s, %s);
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                RETURNING userID;
                 """,
-                (username, password, first_name, last_name, is_mentor, is_shadower, field)
+                (username,
+                 password,
+                 first_name,
+                 last_name,
+                 is_mentor,
+                 is_shadower,
+                 field)
             )
+            user_id = cur.fetchone()[0]
             conn.commit()
-            return f"Successfully created user {username}"
+            print(f"Successfully created user {user_id}")
+            return {"userID": user_id}
     except Exception as e:
         return f"error: {e}"
     finally:
@@ -88,7 +97,14 @@ def update_user(user_id, data):
                 SET username = %s, password = %s, first_name = %s, last_name = %s, is_mentor = %s, is_shadower = %s, field = %s
                 WHERE userID = %s;
                 """,
-                (username, password, first_name, last_name, is_mentor, is_shadower, field, user_id)
+                (username,
+                 password,
+                 first_name,
+                 last_name,
+                 is_mentor,
+                 is_shadower,
+                 field,
+                 user_id)
             )
             conn.commit()
             return f"Successfully updated user {first_name} {last_name}"

@@ -54,12 +54,15 @@ def create_message(data):
             cur.execute(
                 """
                 INSERT INTO messages (userID, message_content, userID2, status)
-                VALUES (%s, %s, %s, %s, %s, %s, %s);
+                VALUES (%s, %s, %s, %s)
+                RETURNING messageID;
                 """,
                 (userID, message_content, userID2, status)
             )
+            message_id = cur.fetchone()[0]
             conn.commit()
-            return f"Successfully created message"
+            print(f"Successfully created message {message_id}")
+            return message_id
     except Exception as e:
         return f"error: {e}"
     finally:
@@ -69,9 +72,7 @@ def create_message(data):
 
 def update_message(message_id, data):
 
-    userID = data.get("userID")
     message_content = data.get("message_content")
-    userID2 = data.get("userID2")
     status = data.get("status")
 
     conn = create_connection()
