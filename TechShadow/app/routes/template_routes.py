@@ -9,3 +9,7 @@ def home():
 @app.route("/contact-us", methods=["GET"])
 def contact_us():
     return render_template('contact_us.html')
+
+@app.route("/signup", methods=["GET"])
+def signup():
+    return render_template('sign_up.html')
