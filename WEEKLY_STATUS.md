@@ -3,7 +3,7 @@
 ## Week 10 updates
 
 ### Sean
-- worked with Anthony and created app architecture and basic CRUD routes
+- completed work on queries, integrating the routes and providing basic CRUD functionality for our database
 
 ### Anthony
 - Finished drafting the table routes after Ashley built out the table queries page
