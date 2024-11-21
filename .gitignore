@@ -1,5 +1,5 @@
 # Git should ignore all files beginning with 'test'
-test*
+*test*
 *env*
+*.py[cod]
 __pycache__/
-*.pyc
