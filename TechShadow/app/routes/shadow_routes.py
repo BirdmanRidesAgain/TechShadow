@@ -2,23 +2,26 @@ from flask import request, render_template
 from ts_app import app
 from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow
 
-@app.route('/shadows')  
+@app.route('/shadows', methods=["GET"])
 def shadow():
-    shadows = get_shadows() 
-    return render_template('shadows.html', shadows=shadows)
+    shadows = get_shadows()
+    return shadows
+    # return render_template('shadows.html', shadows=shadows)
 
 
 @app.route("/shadow", methods=["POST"])
 def post_shadow():
-    return create_shadow()
+    data = request.get_json()
+    return create_shadow(data)
 
 
 @app.route("/shadow/<int:shadow_id>", methods=["GET", "PUT", "DELETE"])
 def get_one_shadow(shadow_id):
     if request.method == "GET":
-        return render_template('base_template.html')
+        return get_shadow(shadow_id)
     elif request.method == "PUT":
-        return update_shadow(shadow_id)
+        data = request.get_json()
+        return update_shadow(data, shadow_id)
     elif request.method == "DELETE":
         return delete_shadow(shadow_id)
 
