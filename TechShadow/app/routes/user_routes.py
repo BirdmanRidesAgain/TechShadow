@@ -7,7 +7,6 @@ from queries.user_queries import get_users, get_user, create_user, update_user, 
 def get_all_users():
     return get_users()
 
-
 @app.route("/user", methods=["POST"])
 def post_user():
     data = request.get_json()

@@ -24,3 +24,5 @@ def get_one_shadow(shadow_id):
         return update_shadow(data, shadow_id)
     elif request.method == "DELETE":
         return delete_shadow(shadow_id)
+
+        
