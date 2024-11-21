@@ -1,8 +1,8 @@
-from flask import jsonify
-from ts_app import app
+from flask import jsonify, Blueprint
 from queries.tables_queries import create_tables
 
+table_bp = Blueprint("tables", __name__)
 
-@app.route("/create_tables")
+@table_bp.route("/create_tables")
 def create_tables_route():
     return create_tables()
