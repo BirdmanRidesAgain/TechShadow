@@ -1,6 +1,7 @@
 from tsdb import create_connection
 from flask import jsonify
 
+
 def get_messages():
     conn = create_connection()
     try:
@@ -93,6 +94,7 @@ def update_message(message_id, data):
     finally:
         if conn:
             conn.close()
+
 
 def delete_message(message_id):
     conn = create_connection()
