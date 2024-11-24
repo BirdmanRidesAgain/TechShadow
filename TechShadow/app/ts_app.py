@@ -25,10 +25,6 @@ app.register_blueprint(user_bp)
 app.register_blueprint(template_bp)
 app.register_blueprint(table_bp)
 
-print("Registered routes:")
-print(app.url_map)
-
-
 if __name__ == "__main__":
     host = os.getenv("FLASK_RUN_HOST", "127.0.0.1")
     port = int(os.getenv("FLASK_RUN_PORT", 5000))
