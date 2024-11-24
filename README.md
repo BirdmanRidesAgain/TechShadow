@@ -1,13 +1,13 @@
 # TechShadow
 
 ## Basic project information
-**Team number:** 
+**Team number:**
 3
 
-**Team name:** 
+**Team name:**
 Team TechShadow
 
-**Project name:** 
+**Project name:**
 TechShadow
 
 **Weekly meeting time:** Tuesday 8:00pm MST (Weekly)
@@ -27,7 +27,7 @@ Each member of this team has expressed that they would have benefited from a too
 
 ## Risks to completion
 
-- Highly asynchronous team 
+- Highly asynchronous team
 - Uneven spread of skills across team members (scripting, back-end, front-end)
 - Limited communication and live coordiation time (Weekly v. Daily)
 - Competing priorities for team members (Work, School, Family, etc.)
@@ -38,8 +38,14 @@ Each member of this team has expressed that they would have benefited from a too
 3.  **Communication and minimal live coordination** - We view this as a moderate risk. Typically agile teams have the opportunity to meet daily and thus can pivot rapidly to avoid blockers, delays, etc. With our inability to meet in a ‘live’ setting more than once a week this becomes more challenging. We believe that using Slack and Trello as communication and coordination tools will help mitigate this risk. 
 4.  **Competing priorities** - We view this as a moderate to low risk. As a team we have discussed that each of us has many, sometimes inflexible, competing priorities that could impact our ability to meet individual goals in a timely manner. We have all agreed that we are willing to share workload and pick up additional slack as necessary to ensure that all team goals are met, as long as each team member needing assistance provides as much warning and time to plan as possible.
 
-## Development method 
+## Development method
 Scrum
 
 ### Project tracking software
 [Trello](https://trello.com/b/UC5UqRxS/techshadow)
+
+## Getting Started
+1. cd into the main dir `cd Techshadow`
+2. activate the virtual environment `source venv/bin/activate`
+3. install dependencies `pip install -r requirements.txt`
+run the application `flask --app app/ts_app run --debug` or `python app/ts_app.py`
