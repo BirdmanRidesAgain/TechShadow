@@ -1,7 +1,7 @@
 import psycopg2
 import os
 import sqlite3
-from db_utils import create_test_tables
+from db_utils import create_test_tables, seed_test_tables
 
 
 DB_USER = os.getenv("DB_USER")
@@ -11,12 +11,13 @@ DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 
 
-# Connect to PostgreSQL
+# Connect to PostgreSQL or testing db
 def create_connection():
     try:
         if os.getenv("TESTING") == "1":
             conn = sqlite3.connect(":memory:")
             create_test_tables(conn)
+            seed_test_tables(conn)
             return conn
         else:
             conn = psycopg2.connect(
