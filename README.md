@@ -46,6 +46,7 @@ Scrum
 
 ## Getting Started
 1. cd into the main dir `cd Techshadow`
-2. activate the virtual environment `source venv/bin/activate`
-3. install dependencies `pip install -r requirements.txt`
+2. create a virtual environment `python -m venv venv`
+3. activate the virtual environment `source venv/bin/activate`
+4. install dependencies `pip install -r requirements.txt`
 run the application `flask --app app/ts_app run --debug` or `python app/ts_app.py`
