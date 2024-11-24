@@ -14,10 +14,8 @@ DB_NAME = os.getenv("DB_NAME")
 # Connect to PostgreSQL
 def create_connection():
     try:
-        print("TESTING: ***************", os.getenv("TESTING"))
         if os.getenv("TESTING") == "1":
             conn = sqlite3.connect(":memory:")
-            print("CONN: ", conn)
             create_test_tables(conn)
             return conn
         else:
