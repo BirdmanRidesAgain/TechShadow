@@ -41,10 +41,10 @@ def create_tables():
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS Messages (
                     messageID SERIAL PRIMARY KEY,
-                    userID INTEGER REFERENCES Users(userID),
+                    userID INTEGER REFERENCES Users(userID) ON DELETE CASCADE,
                     message_content TEXT,
                     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-                    userID2 INTEGER REFERENCES Users(userID),
+                    userID2 INTEGER REFERENCES Users(userID) ON DELETE CASCADE,
                     responded_at TIMESTAMPTZ,
                     status VARCHAR(20) CHECK (status IN ('read', 'unread', 'draft')) DEFAULT 'unread'
                 );
