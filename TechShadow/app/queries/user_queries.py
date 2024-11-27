@@ -3,43 +3,55 @@ from flask import jsonify
 
 # add queries for user table here
 
+
 def get_users():
-    conn = create_connection()
-    print(type(conn))
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute("SELECT * FROM Users;")
             rows = cur.fetchall()
-            return rows
+            if rows:
+                users = [{
+                    "userID": row[0],
+                    "username": row[1],
+                    "first_name": row[3],
+                    "last_name": row[4],
+                    "is_mentor": row[5],
+                    "is_shadower": row[6],
+                    "field": row[7]
+                } for row in rows]
+                return users
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Failed to fetch users from database: {e}")
     finally:
-        conn.close()
+        if conn:
+            conn.close()
 
 
 def get_user(user_id):
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute("SELECT * FROM Users WHERE userID = %s;", (user_id,))
-            user = cur.fetchone()
-            if user:
-                user_json = {
-                    "userID": user[0],
-                    "username": user[1],
-                    "first_name": user[3],
-                    "last_name": user[4],
-                    "is_mentor": user[5],
-                    "is_shadower": user[6],
-                    "field": user[7]
+            row = cur.fetchone()
+            if row:
+                user = {
+                    "userID": row[0],
+                    "username": row[1],
+                    "first_name": row[3],
+                    "last_name": row[4],
+                    "is_mentor": row[5],
+                    "is_shadower": row[6],
+                    "field": row[7]
                 }
-                return jsonify(user_json)
+                return user
             else:
-                return jsonify({"error": "User not found"})
+                raise ValueError("User not found")
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Failed to fetch user from database: {e}")
     finally:
-        conn.close()
+        if conn:
+            conn.close()
 
 
 def create_user(data):
@@ -51,8 +63,8 @@ def create_user(data):
     is_shadower = data.get("is_shadower")
     field = data.get("field")
 
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -70,10 +82,9 @@ def create_user(data):
             )
             user_id = cur.fetchone()[0]
             conn.commit()
-            print(f"Successfully created user {user_id}")
-            return jsonify({"userID": user_id})
+            return {"message": f"User {user_id} created", "userID": user_id}
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Error creating user: {e}")
     finally:
         if conn:
             conn.close()
@@ -89,8 +100,8 @@ def update_user(user_id, data):
     is_shadower = data.get("is_shadower")
     field = data.get("field")
 
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -108,23 +119,24 @@ def update_user(user_id, data):
                  user_id)
             )
             conn.commit()
-            return f"Successfully updated user {first_name} {last_name}"
+            return {"message": f"User {user_id} updated", "userID": user_id}
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Error updating user: {e}")
     finally:
         if conn:
             conn.close()
 
 
 def delete_user(user_id):
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute("DELETE FROM users WHERE userID = %s;", (user_id,))
             conn.commit()
-            return jsonify({"message": f"User {user_id} deleted"})
+            response = {"message": f"User {user_id} deleted", "userID": user_id}
+            return response
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Error deleting user: {e}")
     finally:
         if conn:
             conn.close()
