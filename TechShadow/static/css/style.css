@@ -3,6 +3,7 @@
     --secondary-purple: #f2f4ff;
     --dark-purple: #928ace;
     --text-color: #505050;
+    --bright-purple: #8a2be2;
 }
 
 body {
@@ -19,14 +20,14 @@ body {
 
 header {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 h1 {
   font-size: 48px;
   font-weight: 300;
-  color: var(--main-purple);
-
+  color: var(--bright-purple);
+  margin: 5px;
 }
 
 .main_purple {
@@ -102,6 +103,7 @@ footer {
     text-align: center;
     padding: 50px;
     background-color: var(--main-purple);
+    margin-top: 50px;
 }
 
 footer p {
@@ -268,7 +270,7 @@ footer p {
   }
 
 
-  .contact-header, .search-header {
+  .contact-header, .search-header, .create-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -276,7 +278,7 @@ footer p {
     margin-bottom: 50px;
   }
 
-  .header-img, .search-img {
+  .header-img, .search-img, .create-img {
     width: 200px; 
     height: auto;
     object-fit: cover;
@@ -347,4 +349,86 @@ footer p {
 .shadows .shadow-item p {
   margin: 0;
   padding: 5px 0;
+}
+
+/* CREATE A SHADOW */
+.create-div {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 20%;
+  min-width: 50px;
+  background-color: var(--bright-purple);
+  border-radius: 10px;
+}
+
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 80%;
+}
+
+.create-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.create-container-label {
+  background-color: var(--bright-purple);
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.create-container-label p {
+  margin: 0;
+}
+
+.create-container-form {
+  padding: 30px;
+}
+
+.shadow-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shadow-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.shadow-form input:focus {
+  outline: none;
+  border-color: #8a2be2;
+}
+
+.submit-btn {
+  background-color: #8a2be2;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #7a1dd1;
 }
