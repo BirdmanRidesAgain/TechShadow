@@ -23,7 +23,6 @@ from routes.shadow_routes import shadow_bp
 from routes.user_routes import user_bp
 from routes.template_routes import template_bp
 from routes.table_routes import table_bp
-from routes.form_routes import form_bp
 
 
 @app.route("/test")
@@ -36,7 +35,6 @@ app.register_blueprint(shadow_bp)
 app.register_blueprint(user_bp)
 app.register_blueprint(template_bp)
 app.register_blueprint(table_bp)
-app.register_blueprint(form_bp) #added by AK
 
 if __name__ == "__main__":
     host = os.getenv("FLASK_RUN_HOST", "0.0.0.0")

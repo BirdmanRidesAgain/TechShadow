@@ -41,12 +41,9 @@ def create_tables():
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS Messages (
                     messageID SERIAL PRIMARY KEY,
-                    userID INTEGER REFERENCES Users(userID) ON DELETE CASCADE,
-                    message_content TEXT,
-                    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-                    userID2 INTEGER REFERENCES Users(userID) ON DELETE CASCADE,
-                    responded_at TIMESTAMPTZ,
-                    status VARCHAR(20) CHECK (status IN ('read', 'unread', 'draft')) DEFAULT 'unread'
+                    name VARCHAR(100),
+                    email VARCHAR(100),
+                    message_content TEXT
                 );
             """)
 
@@ -55,5 +52,27 @@ def create_tables():
     except Exception as e:
         print(f"An error occurred while creating tables: {e}")
     finally:
-        conn.close()
+        if conn:
+            conn.close()
         return "create tables"
+
+
+def drop_tables():
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("""
+                        Select tablename
+                        FROM pg_tables
+                        WHERE schemaname = 'public'
+                        """)
+            tables = cur.fetchall()
+            for table in tables:
+                cur.execute(f"DROP TABLE IF EXISTS {table[0]} CASCADE")
+            conn.commit()
+    except Exception as e:
+        print(f"error droppoing tables {e}")
+    finally:
+        if conn:
+            conn.close()
+        return "drop tables"
