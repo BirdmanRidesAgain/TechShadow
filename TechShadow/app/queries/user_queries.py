@@ -133,8 +133,7 @@ def delete_user(user_id):
         with conn.cursor() as cur:
             cur.execute("DELETE FROM users WHERE userID = %s;", (user_id,))
             conn.commit()
-            response = {"message": f"User {user_id} deleted", "userID": user_id}
-            return response
+            return {"message": f"User {user_id} deleted", "userID": user_id}
     except Exception as e:
         raise RuntimeError(f"Error deleting user: {e}")
     finally:

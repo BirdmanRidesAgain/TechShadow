@@ -10,7 +10,7 @@ def get_all_users():
         users = get_users()
         return jsonify(users), 200
     except Exception as e:
-        return jsonify({"error": "Failed to fetch users"}), 500
+        return jsonify({"error": str(e)}), 500
 
 
 @user_bp.route("/user", methods=["POST"])
@@ -20,7 +20,7 @@ def post_user():
         user = create_user(data)
         return jsonify(user), 201
     except RuntimeError as e:
-        return jsonify({f"error: {e}"})
+        return jsonify({"error": str(e)}), 500
 
 
 @user_bp.route("/user/<int:user_id>", methods=["GET", "PUT", "DELETE"])
@@ -29,7 +29,7 @@ def get_one_user(user_id):
         try:
             user = get_user(user_id)
             return jsonify(user), 200
-        except ValueError as e:
+        except ValueError:
             return jsonify({"error": "User not found"}), 404
         except RuntimeError as e:
             return jsonify({"error": str(e)}), 500

@@ -3,8 +3,8 @@ from tsdb import create_connection
 
 
 def test_create_test_tables():
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute("""
                 SELECT table_name
@@ -17,11 +17,12 @@ def test_create_test_tables():
             assert "opportunities" in tables
             assert "messages" in tables
     finally:
-        conn.close()
+        if conn:
+            conn.close()
 
 def test_seed_test_tables():
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             # test user table
             cur.execute("SELECT * from Users;")
@@ -46,4 +47,23 @@ def test_seed_test_tables():
             for i in range(len(shadows)):
                 assert shadows[i][1] == f'position_{i+1}'
     finally:
-        conn.close()
+        if conn:
+            conn.close()
+
+
+# def test_drop_tables(test_client):
+#     try:
+#         test_client.get("/drop_tables")
+#         conn = create_connection()
+#         with conn.cursor() as cur:
+#             cur.execute("""
+#                         SELECT tablename
+#                         FROM pg_tables
+#                         WHERE chemaname= 'public';
+#                         """)
+#             tables = cur.fetchall()
+#             assert len(tables) == 0
+#     finally:
+
+#         if conn:
+#             conn.close()

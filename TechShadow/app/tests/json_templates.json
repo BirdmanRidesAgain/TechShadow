@@ -10,19 +10,13 @@
   "field": "string"
 }
 
-// create message
+// create / update message
 {
-  "userID": 1,
-  "message_content": "string",
-  "userID2": 2,
-  "status": "unread"
+    "name": "string",
+    "email": "string",
+    "message_content": "string"
 }
 
-// update message
-{
-  "message_content": "string",
-  "status": "read"
-}
 
 // create and update opportunity
 {
