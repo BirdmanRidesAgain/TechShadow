@@ -41,7 +41,6 @@ def test_post_user(test_client):
     }
     response = test_client.post("/user", json=new_user)
     data = response.get_json()
-    print("FDSAFDASDFASDFSDFDSAFDS", data)
     user_id = data["userID"]
     assert response.status_code == 201
     assert data["message"] == f"User {user_id} created"

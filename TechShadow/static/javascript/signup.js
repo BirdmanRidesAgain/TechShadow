@@ -1,4 +1,4 @@
-// submit shadow form
+// submit user form
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const user_form = document.getElementById("signup")
