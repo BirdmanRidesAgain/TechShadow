@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header class="create-header">
+    <h1>Sign Up</h1>
+    <img alt="Online learning" src="../static/assets/online-learning.jpg" class="create-img">
+  </header>
+
+  <div class="create-div">
+    <div class="sidebar"></div>
+    <div class="forms-container">
+      <div class="create-container" name="account-info">
+        <div class="create-container-label">
+          <p>Create Account</p>
+        </div>
+        <div class="create-container-form">
+          <form id="signup" class="shadow-form">
+            <input type="text" name="firstname" placeholder="First Name" required>
+            <input type="text" name="lastname" placeholder="Last Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="email" name="email" placeholder="Account email" required>
+            <input type="text" name="field" placeholder="Field of Work" required>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

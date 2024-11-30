@@ -3,7 +3,6 @@ from psycopg2 import sql
 from tsdb import create_connection
 
 
-
 # Function to create tables
 def create_tables():
     try:
@@ -19,7 +18,8 @@ def create_tables():
                     last_name VARCHAR(50),
                     is_mentor BOOLEAN DEFAULT FALSE,
                     is_shadower BOOLEAN DEFAULT FALSE,
-                    field VARCHAR(200)
+                    field VARCHAR(200),
+                    email VARCHAR(200)
                 );
             """)
 
@@ -71,7 +71,7 @@ def drop_tables():
                 cur.execute(f"DROP TABLE IF EXISTS {table[0]} CASCADE")
             conn.commit()
     except Exception as e:
-        print(f"error droppoing tables {e}")
+        print(f"error dropping tables {e}")
     finally:
         if conn:
             conn.close()

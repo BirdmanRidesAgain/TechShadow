@@ -43,7 +43,7 @@ def get_message(message_id):
             else:
                 raise ValueError("message not found")
     except Exception as e:
-        return RuntimeError(f"Failed to fetch message from database: {e}")
+        raise RuntimeError(f"Failed to fetch message from database: {e}")
     finally:
         if conn:
             conn.close()

@@ -9,7 +9,7 @@ def get_all_users():
     try:
         users = get_users()
         return jsonify(users), 200
-    except Exception as e:
+    except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
 
 

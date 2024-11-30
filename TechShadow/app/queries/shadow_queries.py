@@ -4,57 +4,56 @@ from flask import jsonify
 
 
 def get_shadows():
-    conn = create_connection()
-    if conn:
-        try:
-            with conn.cursor() as cur:
-                cur.execute("SELECT position, job_description, status, location FROM Opportunities;")
-                rows = cur.fetchall()
-                opportunities = []
-                for row in rows:
-                    opportunity = {
-                        'position': row[0],
-                        'job_description': row[1],
-                        'status': row[2],
-                        'location': row[3]
-                    }
-                    opportunities.append(opportunity)
-                return opportunities
-        except Exception as e:
-            print(f"An error occurred while fetching opportunities: {e}")
-        finally:
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("SELECT position, job_description, status, location FROM Opportunities;")
+            rows = cur.fetchall()
+            opportunities = []
+            for row in rows:
+                opportunity = {
+                    'position': row[0],
+                    'job_description': row[1],
+                    'status': row[2],
+                    'location': row[3]
+                }
+                opportunities.append(opportunity)
+            return opportunities
+    except Exception as e:
+        raise RuntimeError(f"Failed to fetch shadows from database: {e}")
+    finally:
+        if conn:
             conn.close()
-    else:
-        return []
 
 
 def get_shadow(shadow_id):
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
                 SELECT * FROM opportunities WHERE opportunityID = %s;
                 """, (shadow_id,))
-            shadow = cur.fetchone()
-            if shadow:
-                shadow_json = {
-                    "opportunityID": shadow[0],
-                    "position": shadow[1],
-                    "job_description": shadow[2],
-                    "is_remote": shadow[3],
-                    "is_in_person": shadow[4],
-                    "status": shadow[5],
-                    "required_skills": shadow[6],
-                    "location": shadow[7]
+            row = cur.fetchone()
+            if row:
+                shadow = {
+                    "opportunityID": row[0],
+                    "position": row[1],
+                    "job_description": row[2],
+                    "is_remote": row[3],
+                    "is_in_person": row[4],
+                    "status": row[5],
+                    "required_skills": row[6],
+                    "location": row[7]
                 }
-                return jsonify(shadow_json)
+                return shadow
             else:
-                return jsonify({"error": "shadow not found"})
+                return ValueError("shadow not found")
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Failed to fetch shadow from database: {e}")
     finally:
-        conn.close()
+        if conn:
+            conn.close()
 
 
 def create_shadow(data):
@@ -66,8 +65,8 @@ def create_shadow(data):
     required_skills = data.get("required_skills")
     location = data.get("location")
 
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -92,10 +91,12 @@ def create_shadow(data):
             )
             shadow_id = cur.fetchone()[0]
             conn.commit()
-            print(f"Successfully created shadow {shadow_id}")
-            return jsonify({"shadowID": shadow_id})
+            return {
+                "messsage": f"shadow {shadow_id} created",
+                "shadowID": shadow_id
+                }
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Error creating shadow: {e}")
     finally:
         if conn:
             conn.close()
@@ -111,8 +112,8 @@ def update_shadow(data, shadow_id):
     required_skills = data.get("required_skills")
     location = data.get("location")
 
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -136,23 +137,29 @@ def update_shadow(data, shadow_id):
                  shadow_id)
             )
             conn.commit()
-            return f"Successfully updated shadow {shadow_id}"
+            return {
+                "message": f"shadow {shadow_id} updated",
+                "shadowID": shadow_id
+                }
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Error updating shadow: {e}")
     finally:
         if conn:
             conn.close()
 
 
 def delete_shadow(shadow_id):
-    conn = create_connection()
     try:
+        conn = create_connection()
         with conn.cursor() as cur:
             cur.execute("DELETE FROM opportunities WHERE opportunityID = %s;", (shadow_id,))
             conn.commit()
-            return jsonify({"message": f"shadow {shadow_id} deleted"})
+            return {
+                "message": f"shadow {shadow_id} deleted",
+                "shadowID": shadow_id
+                }
     except Exception as e:
-        return f"error: {e}"
+        raise RuntimeError(f"Error deleting shadow: {e}")
     finally:
         if conn:
             conn.close()

@@ -1,6 +1,22 @@
 import pytest
 from tsdb import create_connection
 
+def test_drop_tables(test_client):
+    try:
+        test_client.get("/drop_tables")
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("""
+                        SELECT tablename
+                        FROM pg_tables
+                        WHERE schemaname = 'public';
+                        """)
+            tables = cur.fetchall()
+            assert len(tables) == 0
+    finally:
+        if conn:
+            conn.close()
+
 
 def test_create_test_tables():
     try:
@@ -37,7 +53,7 @@ def test_seed_test_tables():
 
             assert len(messages) == 3
             for i in range(len(messages)):
-                assert messages[i][1] == 1
+                assert messages[i][1] == f'name_{i+1}'
 
             # test shadow table
             cur.execute("SELECT * from Opportunities;")
@@ -49,21 +65,3 @@ def test_seed_test_tables():
     finally:
         if conn:
             conn.close()
-
-
-# def test_drop_tables(test_client):
-#     try:
-#         test_client.get("/drop_tables")
-#         conn = create_connection()
-#         with conn.cursor() as cur:
-#             cur.execute("""
-#                         SELECT tablename
-#                         FROM pg_tables
-#                         WHERE chemaname= 'public';
-#                         """)
-#             tables = cur.fetchall()
-#             assert len(tables) == 0
-#     finally:
-
-#         if conn:
-#             conn.close()
