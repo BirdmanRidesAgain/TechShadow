@@ -1,4 +1,29 @@
 # Team Progress Report
+## Week 12 updates
+
+### Sean
+- integrated the create user and create shadow forms with backend apis.
+- updated db and test db schema to match changes to the user, message, shadow models
+
+### Anthony
+
+
+### Keiler
+
+### Ashley
+
+
+## Week 11 updates
+
+### Sean
+ - developed test db and architecture to make that run in testing environment. wrote tests for the db setup and the user routes
+
+### Anthony
+
+### Keiler
+
+### Ashley
+
 
 ## Week 10 updates
 
