@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             window.location.href = "/shadows";
         } catch(e) {
             alert(`There was an error submitting this form: ${e.message}`);
-            console.log(e)
+            console.error(e)
         }
     });
 });
