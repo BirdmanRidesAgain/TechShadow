@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userID\": 1,\n    \"message_content\": \"test mezcZczxcZXcz\",\n    \"userID2\": 2,\n    \"status\": \"unread\"\n}",
+					"raw": "{   \n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"message_content\": \"string\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -89,7 +89,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/message/4",
+					"raw": "http://127.0.0.1:5000/message/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -100,7 +100,7 @@
 					"port": "5000",
 					"path": [
 						"message",
-						"4"
+						"1"
 					]
 				}
 			},
@@ -113,7 +113,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"message_content\": \"test message updated\",\n    \"status\": \"read\"\n}",
+					"raw": "{   \n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"message_content\": \"test message updated\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -121,7 +121,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/message/4",
+					"raw": "http://127.0.0.1:5000/message/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -132,20 +132,20 @@
 					"port": "5000",
 					"path": [
 						"message",
-						"4"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "update message Copy",
+			"name": "delete message",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"message_content\": \"test message updated\",\n    \"status\": \"read\"\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -153,7 +153,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/message/6",
+					"raw": "http://127.0.0.1:5000/message/2",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -164,7 +164,7 @@
 					"port": "5000",
 					"path": [
 						"message",
-						"6"
+						"2"
 					]
 				}
 			},

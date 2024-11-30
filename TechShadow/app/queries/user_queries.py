@@ -57,7 +57,6 @@ def get_user(user_id):
 
 
 def create_user(data):
-    print("****************", data)
     username = data.get("username")
     password = data.get("password")
     first_name = data.get("first_name")
@@ -68,7 +67,6 @@ def create_user(data):
     email = data.get("email")
 
     try:
-        print("****************", data)
         conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
