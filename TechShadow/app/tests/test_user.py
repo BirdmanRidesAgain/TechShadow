@@ -25,6 +25,7 @@ def test_get_user(test_client):
     assert data["is_mentor"] == True
     assert data["is_shadower"] == False
     assert data["field"] == "field_1"
+    assert data["email"] == "email_1"
 
 
 def test_post_user(test_client):
@@ -35,10 +36,12 @@ def test_post_user(test_client):
         "last_name": "New_ln",
         "is_mentor": True,
         "is_shadower": False,
-        "field": "New_field"
+        "field": "New_field",
+        "email": "New_email"
     }
     response = test_client.post("/user", json=new_user)
     data = response.get_json()
+    print("FDSAFDASDFASDFSDFDSAFDS", data)
     user_id = data["userID"]
     assert response.status_code == 201
     assert data["message"] == f"User {user_id} created"
@@ -52,6 +55,7 @@ def test_post_user(test_client):
     assert check_data["is_mentor"] == True
     assert check_data["is_shadower"] == False
     assert check_data["field"] == "New_field"
+    assert check_data["email"] == "New_email"
 
 def test_update_user(test_client):
     updated_user = {
@@ -61,7 +65,8 @@ def test_update_user(test_client):
         "last_name": "Updated_ln",
         "is_mentor": False,
         "is_shadower": True,
-        "field": "Updated_field"
+        "field": "Updated_field",
+        "email": "Updated_email"
     }
 
     response = test_client.put("/user/1", json=updated_user)
@@ -78,6 +83,7 @@ def test_update_user(test_client):
     assert check_data["is_mentor"] == False
     assert check_data["is_shadower"] == True
     assert check_data["field"] == "Updated_field"
+    assert check_data["email"] == "Updated_email"
 
 
 def test_delete_user(test_client):

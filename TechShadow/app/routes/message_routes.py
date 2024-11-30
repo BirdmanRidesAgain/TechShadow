@@ -9,7 +9,7 @@ def get_all_messages():
     try:
         messages = get_messages()
         return jsonify(messages), 200
-    except Exception as e:
+    except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
 
 
@@ -19,8 +19,8 @@ def post_message():
         data = request.get_json()
         message = create_message(data)
         return jsonify(message), 201
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    except RuntimeError as e:
+            return jsonify({"error": str(e)}), 500
 
 
 @message_bp.route("/message/<int:message_id>", methods=["GET", "PUT", "DELETE"])

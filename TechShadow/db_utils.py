@@ -11,7 +11,8 @@ def create_test_tables(conn):
                     last_name VARCHAR(50),
                     is_mentor BOOLEAN DEFAULT FALSE,
                     is_shadower BOOLEAN DEFAULT FALSE,
-                    field VARCHAR(200)
+                    field VARCHAR(200),
+                    email VARCHAR(200)
                 );
             """)
 
@@ -33,12 +34,9 @@ def create_test_tables(conn):
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS Messages (
                     messageID SERIAL PRIMARY KEY,
-                    userID INTEGER REFERENCES Users(userID) ON DELETE CASCADE,
-                    message_content TEXT,
-                    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-                    userID2 INTEGER REFERENCES Users(userID) ON DELETE CASCADE,
-                    responded_at TIMESTAMPTZ,
-                    status VARCHAR(20) CHECK (status IN ('read', 'unread', 'draft')) DEFAULT 'unread'
+                    name VARCHAR(100),
+                    email VARCHAR(100),
+                    message_content TEXT
                 );
             """)
 
@@ -61,10 +59,10 @@ def seed_test_tables(conn):
     try:
         with conn.cursor() as cur:
             cur.execute("""
-                INSERT into Users (username, password, first_name, last_name, is_mentor, is_shadower, field)
-                VALUES ('username_1', 'password_1', 'first_name_1', 'last_name_1', True, False, 'field_1'),
-                    ('username_2', 'password_2', 'first_name_2', 'last_name_2', True, False, 'field_2'),
-                    ('username_3', 'password_3', 'first_name_3', 'last_name_3', True, False, 'field_3');
+                INSERT into Users (username, password, first_name, last_name, is_mentor, is_shadower, field, email)
+                VALUES ('username_1', 'password_1', 'first_name_1', 'last_name_1', True, False, 'field_1', 'email_1'),
+                    ('username_2', 'password_2', 'first_name_2', 'last_name_2', True, False, 'field_2', 'email_2'),
+                    ('username_3', 'password_3', 'first_name_3', 'last_name_3', True, False, 'field_3', 'email_3');
             """)
 
             cur.execute("""
@@ -75,10 +73,10 @@ def seed_test_tables(conn):
             """)
 
             cur.execute("""
-                INSERT into Messages (userID, message_content, userID2, status)
-                VALUES (1, 'message_content_1', 2, 'unread'),
-                    (1, 'message_content_2', 2, 'unread'),
-                    (1, 'message_content_3', 2, 'unread');
+                INSERT into Messages (name, email, message_content)
+                VALUES ('name_1', 'email_1', 'message_content_1'),
+                    ('name_2', 'email_2', 'message_content_2'),
+                    ('name_3', 'email_3', 'message_content_3');
             """)
 
             conn.commit()

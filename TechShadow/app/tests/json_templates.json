@@ -7,7 +7,8 @@
   "last_name": "string",
   "is_mentor": true,
   "is_shadower": true,
-  "field": "string"
+  "field": "string",
+  "email": "string"
 }
 
 // create / update message

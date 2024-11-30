@@ -21,7 +21,7 @@ def test_client():
         with app.app_context():
             yield client
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(autouse=True)
 def test_db_create():
     conn = create_connection()
     if conn:

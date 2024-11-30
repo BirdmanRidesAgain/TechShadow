@@ -1,27 +1,46 @@
-from flask import request, render_template, Blueprint
+from flask import request, render_template, Blueprint, jsonify
 from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow
 
 shadow_bp = Blueprint("shadows", __name__)
 
+
 @shadow_bp.route('/shadows', methods=["GET"])
 def shadow():
-    shadows = get_shadows()
-    return shadows
-    # return render_template('shadows.html', shadows=shadows)
-
+    try:
+        shadows = get_shadows()
+        return render_template('shadows.html', shadows=shadows), 200
+    except RuntimeError as e:
+        return jsonify({"error": str(e)}), 500
 
 @shadow_bp.route("/shadow", methods=["POST"])
 def post_shadow():
-    data = request.get_json()
-    return create_shadow(data)
-
+    try:
+        data = request.get_json()
+        shadow = create_shadow(data)
+        return jsonify(shadow), 201
+    except RuntimeError as e:
+        return jsonify({"error": str(e)}), 500
 
 @shadow_bp.route("/shadow/<int:shadow_id>", methods=["GET", "PUT", "DELETE"])
 def get_one_shadow(shadow_id):
     if request.method == "GET":
-        return get_shadow(shadow_id)
+        try:
+            shadow = get_shadow(shadow_id)
+            return jsonify(shadow)
+        except ValueError:
+            return jsonify({"error": "Shadow not found"})
+        except RuntimeError as e:
+            return jsonify({"error": str(e)}), 500
     elif request.method == "PUT":
-        data = request.get_json()
-        return update_shadow(data, shadow_id)
+        try:
+            data = request.get_json()
+            shadow = update_shadow(data, shadow_id)
+            return jsonify(shadow), 200
+        except RuntimeError as e:
+            return jsonify({"error": str(e)}), 500
     elif request.method == "DELETE":
-        return delete_shadow(shadow_id)
+        try:
+            shadow = delete_shadow(shadow_id)
+            return jsonify(shadow), 200
+        except RuntimeError as e:
+            return jsonify({"error": str(e)}), 500

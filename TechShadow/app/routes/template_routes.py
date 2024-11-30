@@ -15,4 +15,9 @@ def contact_us():
 
 @template_bp.route("/signup", methods=["GET"])
 def signup():
+    return render_template('signup.html')
+
+
+@template_bp.route("/create-shadow", methods=["GET"])
+def shadow():
     return render_template('create_shadow.html')

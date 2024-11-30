@@ -18,7 +18,8 @@ def get_users():
                     "last_name": row[4],
                     "is_mentor": row[5],
                     "is_shadower": row[6],
-                    "field": row[7]
+                    "field": row[7],
+                    "email": row[8]
                 } for row in rows]
                 return users
     except Exception as e:
@@ -42,7 +43,8 @@ def get_user(user_id):
                     "last_name": row[4],
                     "is_mentor": row[5],
                     "is_shadower": row[6],
-                    "field": row[7]
+                    "field": row[7],
+                    "email": row[8]
                 }
                 return user
             else:
@@ -55,6 +57,7 @@ def get_user(user_id):
 
 
 def create_user(data):
+    print("****************", data)
     username = data.get("username")
     password = data.get("password")
     first_name = data.get("first_name")
@@ -62,14 +65,16 @@ def create_user(data):
     is_mentor = data.get("is_mentor")
     is_shadower = data.get("is_shadower")
     field = data.get("field")
+    email = data.get("email")
 
     try:
+        print("****************", data)
         conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
-                INSERT INTO users (username, password, first_name, last_name, is_mentor, is_shadower, field)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO users (username, password, first_name, last_name, is_mentor, is_shadower, field, email)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 RETURNING userID;
                 """,
                 (username,
@@ -78,7 +83,8 @@ def create_user(data):
                  last_name,
                  is_mentor,
                  is_shadower,
-                 field)
+                 field,
+                 email)
             )
             user_id = cur.fetchone()[0]
             conn.commit()
@@ -91,7 +97,6 @@ def create_user(data):
 
 
 def update_user(user_id, data):
-
     username = data.get("username")
     password = data.get("password")
     first_name = data.get("first_name")
@@ -99,6 +104,7 @@ def update_user(user_id, data):
     is_mentor = data.get("is_mentor")
     is_shadower = data.get("is_shadower")
     field = data.get("field")
+    email = data.get("email")
 
     try:
         conn = create_connection()
@@ -106,7 +112,7 @@ def update_user(user_id, data):
             cur.execute(
                 """
                 UPDATE users
-                SET username = %s, password = %s, first_name = %s, last_name = %s, is_mentor = %s, is_shadower = %s, field = %s
+                SET username = %s, password = %s, first_name = %s, last_name = %s, is_mentor = %s, is_shadower = %s, field = %s, email = %s
                 WHERE userID = %s;
                 """,
                 (username,
@@ -116,6 +122,7 @@ def update_user(user_id, data):
                  is_mentor,
                  is_shadower,
                  field,
+                 email,
                  user_id)
             )
             conn.commit()
