@@ -23,9 +23,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
             });
             if (!response.ok) throw new Error ("Error adding new user");
             user_form.reset()
+            window.location.href = "/shadows";
         }catch(e) {
             alert(`There was an error submitting this form: ${e.message}`);
-            console.log(e)
+            console.error(e)
         }
     });
 });

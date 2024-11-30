@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
             email: form.email.value,
             message: form.message.value
         }
-        console.log(data)
         try{
             const response = await fetch("/message", {
                 method: "POST",
