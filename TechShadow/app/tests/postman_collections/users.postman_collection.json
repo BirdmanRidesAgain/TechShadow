@@ -35,7 +35,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"string\",\n  \"password\": \"password100\",\n  \"first_name\": \"Sean\",\n  \"last_name\": \"Cunningham\",\n  \"is_mentor\": true,\n  \"is_shadower\": true,\n  \"field\": \"Software Engineering\"\n}",
+					"raw": "{\n  \"username\": \"stringczczxc\",\n  \"password\": \"password100\",\n  \"first_name\": \"Sean\",\n  \"last_name\": \"Cunningham\",\n  \"is_mentor\": true,\n  \"is_shadower\": true,\n  \"field\": \"Software Engineering\",\n  \"email\": \"email@email.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -65,7 +65,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/user/10",
+					"raw": "http://127.0.0.1:5000/user/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -76,7 +76,7 @@
 					"port": "5000",
 					"path": [
 						"user",
-						"10"
+						"1"
 					]
 				}
 			},
@@ -89,7 +89,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"sdsjasdjfkajfdskal;\",\n  \"password\": \"password100\",\n  \"first_name\": \"Sean\",\n  \"last_name\": \"Cunningham\",\n  \"is_mentor\": false,\n  \"is_shadower\": false,\n  \"field\": \"Software Engineering\"\n}",
+					"raw": "{\n  \"username\": \"Sean3000;\",\n  \"password\": \"password100\",\n  \"first_name\": \"Sean\",\n  \"last_name\": \"Cunningham\",\n  \"is_mentor\": false,\n  \"is_shadower\": false,\n  \"field\": \"Software Engineering\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -97,7 +97,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/user/10",
+					"raw": "http://127.0.0.1:5000/user/3000",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -108,7 +108,7 @@
 					"port": "5000",
 					"path": [
 						"user",
-						"10"
+						"3000"
 					]
 				}
 			},
@@ -129,7 +129,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/user/4",
+					"raw": "http://127.0.0.1:5000/user/3",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -140,7 +140,7 @@
 					"port": "5000",
 					"path": [
 						"user",
-						"4"
+						"3"
 					]
 				}
 			},

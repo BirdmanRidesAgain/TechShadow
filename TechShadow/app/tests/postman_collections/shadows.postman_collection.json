@@ -34,7 +34,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/shadow/4",
+					"raw": "http://127.0.0.1:5000/shadow/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -45,7 +45,7 @@
 					"port": "5000",
 					"path": [
 						"shadow",
-						"4"
+						"1"
 					]
 				}
 			},
@@ -58,7 +58,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"position\": \"string\",\n  \"job_description\": \"string\",\n  \"is_remote\": true,\n  \"is_in_person\": false,\n  \"status\": \"open\",\n  \"required_skills\": \"Text\",\n  \"location\": \"string\"\n}",
+					"raw": "{\n  \"position\": \"Engineer\",\n  \"job_description\": \"Engineering stuff\",\n  \"is_remote\": true,\n  \"is_in_person\": false,\n  \"status\": \"open\",\n  \"required_skills\": \"Need to know how to engineer stuff\",\n  \"location\": \"planet earth\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -97,7 +97,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/shadow/5",
+					"raw": "http://127.0.0.1:5000/shadow/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -108,7 +108,7 @@
 					"port": "5000",
 					"path": [
 						"shadow",
-						"5"
+						"1"
 					]
 				}
 			},
@@ -120,7 +120,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/shadow/5",
+					"raw": "http://127.0.0.1:5000/shadow/2",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -131,7 +131,7 @@
 					"port": "5000",
 					"path": [
 						"shadow",
-						"5"
+						"2"
 					]
 				}
 			},
