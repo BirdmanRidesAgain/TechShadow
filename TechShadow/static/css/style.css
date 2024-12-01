@@ -348,3 +348,47 @@ footer p {
   margin: 0;
   padding: 5px 0;
 }
+
+/* CREATE SHADOWS PAGE */
+/* 
+  I had wanted to add '.create-shadows' to the beginning of each of these tags
+  This seems to be the convention for the css definition for all the other pages.
+  However, when I do so, it fails to find/scope(?) the html elements I'm trying to affect.
+  So, for now, that is missing.
+*/
+.create-header {
+  padding: 5px 0;
+}
+
+.create-div {
+  background-color: var(--secondary-purple);
+  margin: 1o;
+  padding: 20px 0;
+}
+.create-div h2,p {
+  color: var(--main-purple)
+}
+.create-div img {
+  width: 50%;
+   height: 50%;
+  float: left;
+}
+
+.create-container {
+  margin: 20;
+  padding: 20px 0;
+}
+
+.create-container-label h3 {
+  width: 80%;
+  color: var(--main-purple);
+  padding: 5px 0;
+}
+
+.create-container-form form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
