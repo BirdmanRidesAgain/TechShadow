@@ -1,0 +1,31 @@
+
+// Create or update user
+{
+  "username": "string",
+  "password": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "is_mentor": true,
+  "is_shadower": true,
+  "field": "string",
+  "email": "string"
+}
+
+// create / update message
+{
+    "name": "string",
+    "email": "string",
+    "message_content": "string"
+}
+
+
+// create and update opportunity
+{
+  "position": "string",
+  "job_description": "string",
+  "is_remote": true,
+  "is_in_person": false,
+  "status": "open",
+  "required_skills": "Text",
+  "location": "string"
+}
