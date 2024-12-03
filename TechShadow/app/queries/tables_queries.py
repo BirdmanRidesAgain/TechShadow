@@ -76,3 +76,51 @@ def drop_tables():
         if conn:
             conn.close()
         return "drop tables"
+
+
+def truncate_test_tables():
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("TRUNCATE TABLE Users RESTART IDENTITY CASCADE;")
+            cur.execute("TRUNCATE TABLE Opportunities RESTART IDENTITY CASCADE;")
+            cur.execute("TRUNCATE TABLE Messages RESTART IDENTITY CASCADE;")
+            conn.commit()
+    except Exception as e:
+        print(f"An error occurred while truncating test tables: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+
+def seed_test_tables():
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("""
+                INSERT into Users (username, password, first_name, last_name, is_mentor, is_shadower, field, email)
+                VALUES ('username_1', 'password_1', 'first_name_1', 'last_name_1', True, False, 'field_1', 'email_1'),
+                    ('username_2', 'password_2', 'first_name_2', 'last_name_2', True, False, 'field_2', 'email_2'),
+                    ('username_3', 'password_3', 'first_name_3', 'last_name_3', True, False, 'field_3', 'email_3');
+            """)
+
+            cur.execute("""
+                INSERT into Opportunities (position, job_description, is_remote, is_in_person, status, required_skills, location)
+                VALUES ('position_1', 'job_description_1', True, False, 'open', 'required_skills_1', 'location_1'),
+                    ('position_2', 'job_description_2', True, False, 'open', 'required_skills_2', 'location_2'),
+                    ('position_3', 'job_description_3', True, False, 'open', 'required_skills_3', 'location_3');
+            """)
+
+            cur.execute("""
+                INSERT into Messages (name, email, message_content)
+                VALUES ('name_1', 'email_1', 'message_content_1'),
+                    ('name_2', 'email_2', 'message_content_2'),
+                    ('name_3', 'email_3', 'message_content_3');
+            """)
+
+            conn.commit()
+    except Exception as e:
+        print(f"An error occurred while seeding test tables: {e}")
+    finally:
+        if conn:
+            conn.close()

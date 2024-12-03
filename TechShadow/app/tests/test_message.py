@@ -16,15 +16,14 @@ def test_get_messages(test_client):
         assert "message_content" in message
 
 
-# def test_get_message(test_client):
-#     response = test_client.get("/message/1") 
-#     data = response.get_json()
-#     assert response.status_code == 200
-
-#     assert data["messageID"] == 1
-#     assert "name" in data
-#     assert "email" in data
-#     assert "message_content" in data
+def test_get_message(test_client):
+    response = test_client.get("/message/1")
+    data = response.get_json()
+    assert response.status_code == 200
+    assert data["messageID"] == 1
+    assert "name" in data
+    assert "email" in data
+    assert "message_content" in data
 
 
 def test_create_message(test_client):
@@ -53,7 +52,7 @@ def test_update_message(test_client):
         "message_content": "This is an updated test message.",
     }
 
-    response = test_client.put("/message/1", json=updated_data) 
+    response = test_client.put("/message/1", json=updated_data)
     data = response.get_json()
     message_id = data["messageID"]
     assert response.status_code == 200
@@ -66,7 +65,7 @@ def test_update_message(test_client):
 
 
 def test_delete_message(test_client):
-    response = test_client.delete("/message/1") 
+    response = test_client.delete("/message/1")
     data = response.get_json()
     message_id = 1
     assert response.status_code == 200

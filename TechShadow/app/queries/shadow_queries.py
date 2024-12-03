@@ -48,7 +48,7 @@ def get_shadow(shadow_id):
                 }
                 return shadow
             else:
-                return ValueError("shadow not found")
+                raise ValueError("shadow not found")
     except Exception as e:
         raise RuntimeError(f"Failed to fetch shadow from database: {e}")
     finally:
