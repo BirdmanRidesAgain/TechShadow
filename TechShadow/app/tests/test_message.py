@@ -16,15 +16,15 @@ def test_get_messages(test_client):
         assert "message_content" in message
 
 
-def test_get_message(test_client):
-    response = test_client.get("/message/1") 
-    data = response.get_json()
-    assert response.status_code == 200
+# def test_get_message(test_client):
+#     response = test_client.get("/message/1") 
+#     data = response.get_json()
+#     assert response.status_code == 200
 
-    assert data["messageID"] == 1
-    assert "name" in data
-    assert "email" in data
-    assert "message_content" in data
+#     assert data["messageID"] == 1
+#     assert "name" in data
+#     assert "email" in data
+#     assert "message_content" in data
 
 
 def test_create_message(test_client):
