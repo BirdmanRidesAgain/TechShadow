@@ -1,4 +1,85 @@
 import pytest
+from app.queries.shadow_queries import get_shadow
 
 
-#   add tests for shadow routes / queries
+def test_get_shadows(test_db):
+    shadows = test_client.get("/shadows")
+    data = shadows.get_json()
+    assert response.status_code == 200
+
+    assert isinstance(shadows, list)
+    assert len(shadows) > 0
+    for shadow in shadows:
+        assert "position" in shadow
+        assert "job_description" in shadow
+        assert "status" in shadow
+        assert "location" in shadow
+
+
+def test_get_shadow(test_db):
+    shadow_id = test_client.get("/shadow/1")  
+    shadow =shadow_id.get_json()
+    assert shadow_id.status_code == 200
+
+    assert shadow["opportunityID"] == shadow_id
+    assert "position" in shadow
+    assert "job_description" in shadow
+    assert "is_remote" in shadow
+    assert "location" in shadow
+
+
+def test_create_shadow(test_db):
+    new_shadow = {
+        "position": "Software Developer Intern",
+        "job_description": "Assist in developing web applications",
+        "is_remote": True,
+        "is_in_person": False,
+        "status": "open",
+        "required_skills": "Python, Django",
+        "location": "Remote",
+    }
+
+    result = test_client.post("/shadow", json=new_shadow)
+    data = result.get_json()
+    shadow_id = result["shadowID"]
+    assert response.status.code == 201
+
+    assert data["messsage"] == f"shadow {shadow_id} created"
+    shadow = get_shadow(shadow_id)
+    assert shadow["position"] == new_shadow["position"]
+    assert shadow["job_description"] == new_shadow["job_description"]
+    assert shadow["location"] == new_shadow["location"]
+
+
+def test_update_shadow(test_db):
+    updated_data = {
+        "position": "Updated Position",
+        "job_description": "Updated Job Description",
+        "is_remote": False,
+        "is_in_person": True,
+        "status": "closed",
+        "required_skills": "Updated Skills",
+        "location": "Updated Location",
+    }
+
+    result = test_client.put("/shadow/1", json=updated_data)
+    data = response.get_json()
+    shadow_id = result["shadowID"]
+    assert response.status_code == 200
+
+    assert result["message"] == f"shadow {shadow_id} updated"
+    updated_shadow = get_shadow(shadow_id)
+    assert updated_shadow["position"] == updated_data["position"]
+    assert updated_shadow["job_description"] == updated_data["job_description"]
+    assert updated_shadow["location"] == updated_data["location"]
+
+
+def test_delete_shadow(test_db):
+    response = test_client.delete("/shadow/1") 
+    data = response.get_json()
+    shadow_id = 1
+    assert response.status_code == 200
+
+    assert result["message"] == f"shadow {shadow_id} deleted"
+    with pytest.raises(ValueError, match="shadow not found"):
+        get_shadow(shadow_id)
