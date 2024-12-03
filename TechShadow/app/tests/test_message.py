@@ -72,5 +72,5 @@ def test_delete_message(test_client):
     assert response.status_code == 200
 
     assert data["message"] == f"Message {message_id} deleted"
-    with pytest.raises(ValueError, match="message not found"):
+    with pytest.raises(RuntimeError, match="message not found"):
         get_message(message_id)

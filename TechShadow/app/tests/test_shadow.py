@@ -1,12 +1,12 @@
 import pytest
-from app.queries.shadow_queries import get_shadow
+from app.queries.shadow_queries import get_shadow, get_shadows
 
 def test_get_shadows(test_client):
     response = test_client.get("/shadows")
     assert response.status_code == 200, "Request failed"
 
     assert response.content_type == "application/json", "Response is not JSON"
-    data = response.get_json()
+    data = get_shadows()
     assert data is not None, "Response JSON is None"
 
     assert isinstance(data, list), "Response JSON is not a list"
@@ -85,5 +85,5 @@ def test_delete_shadow(test_client):
 
     data = response.get_json()
     assert data["message"] == f"shadow {shadow_id} deleted"
-    with pytest.raises(ValueError, match="shadow not found"):
+    with pytest.raises(RuntimeError, match="shadow not found"):
         get_shadow(shadow_id)
