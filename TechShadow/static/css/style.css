@@ -34,6 +34,11 @@ h1 {
     color: var(--main-purple);
 }
 
+#homepage-info {
+  font-size: 20px;
+  color: rgb(29, 2, 29);
+}
+
 .top-column {
     display: flex;
     justify-content: space-between;
@@ -358,39 +363,91 @@ footer p {
   However, when I do so, it fails to find/scope(?) the html elements I'm trying to affect.
   So, for now, that is missing.
 */
-.create-header {
-  padding: 5px 0;
+.create-div {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  gap: 30px;
+  margin: 0 auto;
 }
 
-.create-div {
-  background-color: var(--secondary-purple);
-  margin: 1o;
-  padding: 20px 0;
+.sidebar {
+  width: 20%;
+  min-width: 50px;
+  background-color: #8a2be2;
+  border-radius: 10px;
 }
-.create-div h2,p {
-  color: var(--main-purple)
-}
-.create-div img {
-  width: 50%;
-   height: 50%;
-  float: left;
+
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 80%;
 }
 
 .create-container {
-  margin: 20;
-  padding: 20px 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.create-container-label h3 {
-  width: 80%;
-  color: var(--main-purple);
-  padding: 5px 0;
+.create-container-label {
+  background-color: #8a2be2;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.create-container-form form {
-  width: 80%;
+.create-container-label p {
+  margin: 0;
+}
+
+.create-container-form {
+  padding: 30px;
+}
+
+.shadow-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  
+  gap: 20px;
+}
+
+.shadow-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.shadow-form input:focus {
+  outline: none;
+  border-color: #8a2be2;
+}
+
+.submit-btn {
+  background-color: #8a2be2;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #7a1dd1;
+}
+
+#create-shadow-info {
+  display: flex;
+  flex-direction: row;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 20px;
 }
