@@ -19,15 +19,11 @@
                 <p>New posting details</p>
             </div>
             <div class="create-container-form">
-                <form method="post" enctype="text/plain" class="shadow-form" width=100%>
-                    <input type="text" name="user-name" placeholder="Your name" required>    
-                    <input type="text" name="listing-email" placeholder="Email to show on listing" required>
-                    <input type="text" name="employer" placeholder="Employer" required>    
-                    <input type="text" name="work-hours" placeholder="Work hours" required>    
-                    <input type="text" name="job-title" placeholder="Job title" required>    
-                    <input type="text" name="work-details" placeholder="Work details" required>    
-                    <input type="text" name="employer-website" placeholder="Employer website" required>    
-                    <input type="text" name="remote-in-person" placeholder="Remote, in-person, or either?" required>    
+                <form method="post" enctype="text/plain" id="shadow-form" class="shadow-form" width=100%>
+                    <input type="text" name="position" placeholder="Job title" required>    
+                    <input type="text" name="location" placeholder="Job location" required>    
+                    <input type="text" name="skills" placeholder="Required Skills" required>
+                    <input type="text" name="description" placeholder="Job description" required>
                     <button type="submit" class="submit-btn">Submit</button>
                 </form>
             </div>
