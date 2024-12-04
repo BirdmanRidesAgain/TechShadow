@@ -1,5 +1,7 @@
 import pytest
 from tsdb import create_connection
+from app.queries.tables_queries import create_tables, seed_test_tables
+
 
 def test_drop_tables(test_client):
     try:
@@ -18,7 +20,7 @@ def test_drop_tables(test_client):
             conn.close()
 
 
-def test_create_test_tables():
+def test_create_tables():
     try:
         conn = create_connection()
         with conn.cursor() as cur:
@@ -36,18 +38,18 @@ def test_create_test_tables():
         if conn:
             conn.close()
 
+
 def test_seed_test_tables():
     try:
         conn = create_connection()
         with conn.cursor() as cur:
-            # test user table
+
             cur.execute("SELECT * from Users;")
             users = cur.fetchall()
             assert len(users) == 3
             for i in range(len(users)):
                 assert users[i][1] == f'username_{i+1}'
 
-            # test message table
             cur.execute("SELECT * from Messages;")
             messages = cur.fetchall()
 
@@ -55,7 +57,6 @@ def test_seed_test_tables():
             for i in range(len(messages)):
                 assert messages[i][1] == f'name_{i+1}'
 
-            # test shadow table
             cur.execute("SELECT * from Opportunities;")
             shadows = cur.fetchall()
 

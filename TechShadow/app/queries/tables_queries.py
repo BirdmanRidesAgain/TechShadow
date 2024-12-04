@@ -33,7 +33,8 @@ def create_tables():
                     is_in_person BOOLEAN DEFAULT FALSE,
                     status VARCHAR(20) CHECK (status IN ('open', 'pending', 'closed')) NOT NULL,
                     required_skills TEXT,
-                    location VARCHAR(100)
+                    location VARCHAR(100),
+                    userID INTEGER references Users(userID) ON DELETE CASCADE
                 );
             """)
 
@@ -43,7 +44,8 @@ def create_tables():
                     messageID SERIAL PRIMARY KEY,
                     name VARCHAR(100),
                     email VARCHAR(100),
-                    message_content TEXT
+                    message_content TEXT,
+                    userID INT references Users(userID) ON DELETE CASCADE
                 );
             """)
 
@@ -105,17 +107,17 @@ def seed_test_tables():
             """)
 
             cur.execute("""
-                INSERT into Opportunities (position, job_description, is_remote, is_in_person, status, required_skills, location)
-                VALUES ('position_1', 'job_description_1', True, False, 'open', 'required_skills_1', 'location_1'),
-                    ('position_2', 'job_description_2', True, False, 'open', 'required_skills_2', 'location_2'),
-                    ('position_3', 'job_description_3', True, False, 'open', 'required_skills_3', 'location_3');
+                INSERT into Opportunities (position, job_description, is_remote, is_in_person, status, required_skills, location, userID)
+                VALUES ('position_1', 'job_description_1', True, False, 'open', 'required_skills_1', 'location_1', 1),
+                    ('position_2', 'job_description_2', True, False, 'open', 'required_skills_2', 'location_2', 1),
+                    ('position_3', 'job_description_3', True, False, 'open', 'required_skills_3', 'location_3', 1);
             """)
 
             cur.execute("""
-                INSERT into Messages (name, email, message_content)
-                VALUES ('name_1', 'email_1', 'message_content_1'),
-                    ('name_2', 'email_2', 'message_content_2'),
-                    ('name_3', 'email_3', 'message_content_3');
+                INSERT into Messages (name, email, message_content, userID)
+                VALUES ('name_1', 'email_1', 'message_content_1', 1),
+                    ('name_2', 'email_2', 'message_content_2', 1),
+                    ('name_3', 'email_3', 'message_content_3', 1);
             """)
 
             conn.commit()

@@ -7,7 +7,7 @@ def get_shadows():
     try:
         conn = create_connection()
         with conn.cursor() as cur:
-            cur.execute("SELECT position, job_description, status, location FROM Opportunities;")
+            cur.execute("SELECT position, job_description, status, location, userID FROM Opportunities;")
             rows = cur.fetchall()
             opportunities = []
             for row in rows:
@@ -15,7 +15,8 @@ def get_shadows():
                     'position': row[0],
                     'job_description': row[1],
                     'status': row[2],
-                    'location': row[3]
+                    'location': row[3],
+                    'userID': row[4]
                 }
                 opportunities.append(opportunity)
             return opportunities
@@ -32,7 +33,15 @@ def get_shadow(shadow_id):
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT * FROM opportunities WHERE opportunityID = %s;
+                SELECT
+                opportunityID,
+                position,
+                job_description,
+                status,
+                location,
+                userID
+                FROM Opportunities
+                WHERE opportunityID = %s;
                 """, (shadow_id,))
             row = cur.fetchone()
             if row:
@@ -40,11 +49,9 @@ def get_shadow(shadow_id):
                     "opportunityID": row[0],
                     "position": row[1],
                     "job_description": row[2],
-                    "is_remote": row[3],
-                    "is_in_person": row[4],
-                    "status": row[5],
-                    "required_skills": row[6],
-                    "location": row[7]
+                    "status": row[3],
+                    "location": row[4],
+                    "userID": row[5]
                 }
                 return shadow
             else:
@@ -64,6 +71,8 @@ def create_shadow(data):
     status = data.get("status")
     required_skills = data.get("required_skills")
     location = data.get("location")
+    # TODO: update when users can login and userID can be automatically passed
+    userID = 1
 
     try:
         conn = create_connection()
@@ -77,8 +86,9 @@ def create_shadow(data):
                 is_in_person,
                 status,
                 required_skills,
-                location)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                location,
+                userID)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 RETURNING opportunityID;
                 """,
                 (position,
@@ -87,7 +97,8 @@ def create_shadow(data):
                  is_in_person,
                  status,
                  required_skills,
-                 location)
+                 location,
+                 userID)
             )
             shadow_id = cur.fetchone()[0]
             conn.commit()

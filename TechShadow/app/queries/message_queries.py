@@ -13,7 +13,8 @@ def get_messages():
                     "messageID": row[0],
                     "name": row[1],
                     "email": row[2],
-                    "message_content": row[3]
+                    "message_content": row[3],
+                    "userID": row[4],
                 } for row in rows]
                 return messages
     except Exception as e:
@@ -38,6 +39,7 @@ def get_message(message_id):
                     "name": row[1],
                     "email": row[2],
                     "message_content": row[3],
+                    "userID": row[4]
                 }
                 return message
             else:
@@ -53,17 +55,19 @@ def create_message(data):
     name = data.get("name")
     email = data.get("email")
     message_content = data.get("message_content")
+    # TODO: update when users are able to login and pass this automatically
+    userID = 1
 
     try:
         conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
-                INSERT INTO messages (name, email, message_content)
-                VALUES (%s, %s, %s)
+                INSERT INTO messages (name, email, message_content, userID)
+                VALUES (%s, %s, %s, %s)
                 RETURNING messageID;
                 """,
-                (name, email, message_content)
+                (name, email, message_content, userID)
             )
             message_id = cur.fetchone()[0]
             conn.commit()

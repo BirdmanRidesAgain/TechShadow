@@ -16,6 +16,7 @@ def test_get_shadows(test_client):
         assert "job_description" in shadow
         assert "status" in shadow
         assert "location" in shadow
+        assert "userID" in shadow
 
 
 def test_get_shadow(test_client):
@@ -26,8 +27,9 @@ def test_get_shadow(test_client):
     assert shadow["opportunityID"] == 1
     assert "position" in shadow
     assert "job_description" in shadow
-    assert "is_remote" in shadow
+    assert "status" in shadow
     assert "location" in shadow
+    assert "userID" in shadow
 
 
 def test_create_shadow(test_client):

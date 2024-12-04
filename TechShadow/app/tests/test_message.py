@@ -14,6 +14,7 @@ def test_get_messages(test_client):
         assert "name" in message
         assert "email" in message
         assert "message_content" in message
+        assert "userID" in message
 
 
 def test_get_message(test_client):
@@ -24,13 +25,14 @@ def test_get_message(test_client):
     assert "name" in data
     assert "email" in data
     assert "message_content" in data
+    assert "userID" in data
 
 
 def test_create_message(test_client):
     new_message = {
         "name": "John Doe",
         "email": "johndoe@example.com",
-        "message_content": "This is a test message.",
+        "message_content": "This is a test message."
     }
 
     response = test_client.post("/message", json=new_message)
