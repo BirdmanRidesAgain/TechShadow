@@ -1,3 +1,4 @@
+'''Implements database access/posting methods for the users page.'''
 from flask import request, jsonify, Blueprint
 from app.queries.user_queries import get_users, get_user, create_user, update_user, delete_user
 

@@ -1,3 +1,5 @@
+'''Script provided by the instructors to make our app usable in CU Virtual Machine.
+Script proved problematic for all members of the team; hence commented out.'''
 # ###############################################################################
 # ## Import this file into your lab_6_app.py file to make it usable in Flask when
 # ## running either in the csel.io virtual machine or running on your local machine.

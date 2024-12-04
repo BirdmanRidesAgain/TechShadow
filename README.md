@@ -8,7 +8,7 @@
 Team TechShadow
 
 **Project name:**
-TechShadow
+[TechShadow](https://techshadow.onrender.com)
 
 **Weekly meeting time:** Tuesday 8:00pm MST (Weekly)
 
@@ -20,7 +20,7 @@ TechShadow
 |   Sean Cunningham |   sean-cunningham |   sean.cunningham-2@colorado.edu  |
 
 ## Vision statement
-Whether it has been part of a career path transition, a switch to a new company, or even a change from one development team to another in the same company, we have all wished we had the opportunity to see if the grass actually is greener on the other side. TechShodow allows its users the opportunity to see first hand, in a stress free environment, what a day in the life of a developer truly entails, so that they can make confident informed decisions about that next career move.
+Whether it has been part of a career path transition, a switch to a new company, or even a change from one development team to another in the same company, we have all wished we had the opportunity to see if the grass actually is greener on the other side. TechShadow allows its users the opportunity to see first hand, in a stress free environment, what a day in the life of a developer truly entails, so that they can make confident informed decisions about that next career move.
 
 ## Motivation
 Each member of this team has expressed that they would have benefited from a tool like TechShadow in their own lives. I think we are all excited to bring this product to life so that others (or even ourselves) can benefit from it in their future career decisions.
@@ -29,7 +29,7 @@ Each member of this team has expressed that they would have benefited from a too
 
 - Highly asynchronous team
 - Uneven spread of skills across team members (scripting, back-end, front-end)
-- Limited communication and live coordiation time (Weekly v. Daily)
+- Limited communication and live coordination time (Weekly v. Daily)
 - Competing priorities for team members (Work, School, Family, etc.)
 
 ### Mitigation strategy

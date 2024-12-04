@@ -1,3 +1,4 @@
+'''Implements database access/posting methods for shadows page.'''
 from flask import request, render_template, Blueprint, jsonify
 from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow
 
