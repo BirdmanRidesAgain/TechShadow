@@ -2,51 +2,35 @@
 {% block content %}
 
 <header class="create-header">
-    <h1>I want to pitch in!</h1>
+    <h1>Thank you for your interest!</h1>
+    <img alt="Online learning" src="../static/assets/online-learning.jpg" class="create-img">     
 </header>
+<p id="create-shadow-info">
+    Fill out the form below to get registered. 
+    When complete, your info will appear on the 'Shadow Opportunities' tab.
+    When someone is interested, they will contact you and you will sort out the contact details.
+</p>
 
-<div class="create-div" name="create-shadow-intro">
-    <h2>Thank you for your interest!</h2>
-    <img alt="Online learning" src="../static/assets/online-learning.jpg" class="create-img">
-    <p>
-        Fill out the form below to get registered. 
-        When complete, your info will appear on the 'Shadow Opportunities' tab.
-        When someone is interested, they will contact you and you will sort out the contact details.
-    </p>
-</div>
-
-<div class="create-div" name="input-create-shadow-information">
-    <div class="create-container" name="account-info">
-        <div class="create-container-label">
-            <p><h3>Create Account:</h3></p>
-        </div>
-        <div class="create-container-form">
-          <form class="shadow-form" id="shadow-form">
-            <input type="text" name="position" placeholder="Job title" required>
-            <input type="text" name="location" placeholder="Job location" required>
-            <input type="text" name="skills" placeholder="Required skills" required>
-            <textareA rows="5" name="description" placeholder="Job description" required></textarea>
-            <button type="submit" class="submit-btn">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="create-container" name="new-post">
-        <div class="create-container-label">
-            <p><h3>New posting details:</h3></p>
-        </div>
-        <div class="create-container-form">
-            <form method="post" enctype="text/plain" class="shadow-form" width=100%>
-                <input type="text" name="user-name" placeholder="Your name" required>    
-                <input type="text" name="listing-email" placeholder="Email to show on listing" required>
-                <input type="text" name="employer" placeholder="Employer" required>    
-                <input type="text" name="work-hours" placeholder="Work hours" required>    
-                <input type="text" name="job-title" placeholder="Job title" required>    
-                <input type="text" name="work-details" placeholder="Work details" required>    
-                <input type="text" name="employer-website" placeholder="Employer website" required>    
-                <input type="text" name="remote-in-person" placeholder="Remote, in-person, or either?" required>    
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
+<div class="create-div">
+    <div class="sidebar"></div>
+    <div class="forms-container">
+        <div class="create-container">
+            <div class="create-container-label">
+                <p>New posting details</p>
+            </div>
+            <div class="create-container-form">
+                <form method="post" enctype="text/plain" class="shadow-form" width=100%>
+                    <input type="text" name="user-name" placeholder="Your name" required>    
+                    <input type="text" name="listing-email" placeholder="Email to show on listing" required>
+                    <input type="text" name="employer" placeholder="Employer" required>    
+                    <input type="text" name="work-hours" placeholder="Work hours" required>    
+                    <input type="text" name="job-title" placeholder="Job title" required>    
+                    <input type="text" name="work-details" placeholder="Work details" required>    
+                    <input type="text" name="employer-website" placeholder="Employer website" required>    
+                    <input type="text" name="remote-in-person" placeholder="Remote, in-person, or either?" required>    
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
