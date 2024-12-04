@@ -1,3 +1,4 @@
+'''Implements database access/posting methods for messages page.'''
 from flask import request, Blueprint, jsonify
 from queries.message_queries import get_messages, get_message, create_message, update_message, delete_message, get_messages_by_user
 

@@ -1,3 +1,4 @@
+'''Creates routes from static html files. 'template.html' used as a blueprint for all html routes.'''
 from flask import render_template, Blueprint
 
 template_bp = Blueprint("templates", __name__)

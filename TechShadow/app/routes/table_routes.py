@@ -1,3 +1,4 @@
+'''Implements database access/posting methods for our table queries.'''
 from flask import jsonify, Blueprint
 from queries.tables_queries import create_tables, drop_tables
 

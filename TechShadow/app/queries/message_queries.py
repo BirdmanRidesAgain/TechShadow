@@ -1,3 +1,4 @@
+'''Implements functions for handling/relaying methods to and from the database.'''
 from tsdb import create_connection
 from flask import jsonify
 
