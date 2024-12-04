@@ -28,7 +28,6 @@ def get_users():
         if conn:
             conn.close()
 
-
 def get_user(user_id):
     try:
         conn = create_connection()
@@ -141,6 +140,23 @@ def delete_user(user_id):
             return {"message": f"User {user_id} deleted", "userID": user_id}
     except Exception as e:
         raise RuntimeError(f"Error deleting user: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+
+def get_user_dropdown():
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("Select username, first_name, last_name from users;")
+            rough_users = cur.fetchall()
+            drop_down_list = ["All"]
+            for user in rough_users:
+                username = user[0]
+                first = user[1][:1]
+                last = user[2]
+                drop_down_list.append(f"{first} {last} ({username})")
     finally:
         if conn:
             conn.close()
