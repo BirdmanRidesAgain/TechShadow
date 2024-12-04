@@ -1,8 +1,6 @@
 import pytest
 from app.queries.user_queries import get_user
 
-# from tsdb import create_connection
-
 
 #  route tests
 def test_get_all_users(test_client):
@@ -94,3 +92,10 @@ def test_delete_user(test_client):
     assert data["message"] == f"User {user_id} deleted"
     with pytest.raises(RuntimeError, match="User not found"):
         get_user(user_id)
+
+
+def test_get_user_dropdown_list(test_client):
+    response = test_client.get("/user_dropdown")
+    data = response.get_json()
+    assert response.status_code == 200
+    assert data == ["All", "F. Last_name_1 (username_1)", "F. Last_name_2 (username_2)", "F. Last_name_3 (username_3)"]

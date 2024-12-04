@@ -1,5 +1,5 @@
 from flask import request, render_template, Blueprint, jsonify
-from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow
+from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow, get_shadows_by_username
 
 shadow_bp = Blueprint("shadows", __name__)
 
@@ -9,6 +9,16 @@ def shadow():
     try:
         shadows = get_shadows()
         return render_template('shadows.html', shadows=shadows), 200
+    except RuntimeError as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# TODO add this filter to the shadows page
+@shadow_bp.route('/shadows/<username>', methods=["GET"])
+def shadows_by_username(username):
+    try:
+        shadows = get_shadows_by_username(username)
+        return jsonify(shadows), 200
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
 

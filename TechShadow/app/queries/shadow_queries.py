@@ -27,6 +27,39 @@ def get_shadows():
             conn.close()
 
 
+# TODO integrate this into shadow list page as filter
+def get_shadows_by_username(username):
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("""
+                        SELECT
+                        opportunities.position,
+                        opportunities.job_description,
+                        opportunities.status,
+                        opportunities.location
+                        FROM Opportunities
+                        JOIN Users ON opportunities.userID = Users.userID
+                        WHERE Users.username = %s;
+                        """, (username,))
+            rows = cur.fetchall()
+            opportunities = []
+            for row in rows:
+                opportunity = {
+                    'position': row[0],
+                    'job_description': row[1],
+                    'status': row[2],
+                    'location': row[3]
+                }
+                opportunities.append(opportunity)
+            return opportunities
+    except Exception as e:
+        raise RuntimeError(f"Failed to fetch shadows for this username: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+
 def get_shadow(shadow_id):
     try:
         conn = create_connection()

@@ -154,9 +154,11 @@ def get_user_dropdown():
             drop_down_list = ["All"]
             for user in rough_users:
                 username = user[0]
-                first = user[1][:1]
+                first = user[1][0]
                 last = user[2]
-                drop_down_list.append(f"{first} {last} ({username})")
+                drop_down_list.append(f"{first.upper()}. {last[0].upper()}{last[1:]} ({username})")
+                print("fdjsfajdsklfjaskdljflsa;jfksdlfa", drop_down_list)
+            return drop_down_list
     finally:
         if conn:
             conn.close()

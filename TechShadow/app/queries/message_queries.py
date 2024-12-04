@@ -23,6 +23,36 @@ def get_messages():
         if conn:
             conn.close()
 
+# TODO: integrate this for admins to see messages by users
+def get_messages_by_user(user_id):
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("""
+                        SELECT
+                        messages.name,
+                        messages.email,
+                        messages.message_content
+                        FROM Messages
+                        WHERE Messages.userID = %s;
+                        """, (user_id,))
+            rows = cur.fetchall()
+            messages = []
+            for row in rows:
+                message = {
+                    "name": row[0],
+                    "email": row[1],
+                    "message_content": row[2]
+                }
+                messages.append(message)
+            print("messages", messages)
+            return messages
+    except Exception as e:
+        raise RuntimeError(f"Failed to fetch messages for this userID: {e}")
+    finally:
+        if conn:
+            conn.close()
+
 
 def get_message(message_id):
     try:

@@ -89,3 +89,14 @@ def test_delete_shadow(test_client):
     assert data["message"] == f"shadow {shadow_id} deleted"
     with pytest.raises(RuntimeError, match="shadow not found"):
         get_shadow(shadow_id)
+
+
+def test_get_shadows_by_username(test_client):
+    response = test_client.get("/shadows/username_1")
+    assert response.status_code == 200
+
+    data = response.get_json()
+    assert len(data) == 3
+
+    for i in range(3):
+        assert f"{data[i]['position']} == position_{i}"

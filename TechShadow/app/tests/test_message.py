@@ -75,3 +75,10 @@ def test_delete_message(test_client):
     assert data["message"] == f"Message {message_id} deleted"
     with pytest.raises(RuntimeError, match="message not found"):
         get_message(message_id)
+
+
+def test_get_messages_by_user(test_client):
+    response = test_client.get("/messages/1")
+    assert response.status_code == 200
+    data = response.get_json()
+    assert len(data) == 3

@@ -1,5 +1,5 @@
 from flask import request, Blueprint, jsonify
-from queries.message_queries import get_messages, get_message, create_message, update_message, delete_message
+from queries.message_queries import get_messages, get_message, create_message, update_message, delete_message, get_messages_by_user
 
 message_bp = Blueprint("messages", __name__)
 
@@ -12,6 +12,14 @@ def get_all_messages():
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
 
+# TODO implement this for admin review of messages
+@message_bp.route("/messages/<user_id>", methods=["GET"])
+def get_messages_by_userid(user_id):
+    try:
+        messages = get_messages_by_user(user_id)
+        return jsonify(messages), 200
+    except RuntimeError as e:
+        return jsonify({"error": str(e)}), 500
 
 @message_bp.route("/message", methods=["POST"])
 def post_message():
