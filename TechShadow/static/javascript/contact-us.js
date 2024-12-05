@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         const data = {
             name: form.name.value,
             email: form.email.value,
-            message: form.message.value
+            message_content: form.message.value
         }
         try{
             const response = await fetch("/message", {

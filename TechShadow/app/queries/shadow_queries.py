@@ -7,7 +7,41 @@ def get_shadows():
     try:
         conn = create_connection()
         with conn.cursor() as cur:
-            cur.execute("SELECT position, job_description, status, location FROM Opportunities;")
+            cur.execute("SELECT position, job_description, status, location, userID FROM Opportunities;")
+            rows = cur.fetchall()
+            opportunities = []
+            for row in rows:
+                opportunity = {
+                    'position': row[0],
+                    'job_description': row[1],
+                    'status': row[2],
+                    'location': row[3],
+                    'userID': row[4]
+                }
+                opportunities.append(opportunity)
+            return opportunities
+    except Exception as e:
+        raise RuntimeError(f"Failed to fetch shadows from database: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+
+# TODO integrate this into shadow list page as filter
+def get_shadows_by_username(username):
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("""
+                        SELECT
+                        opportunities.position,
+                        opportunities.job_description,
+                        opportunities.status,
+                        opportunities.location
+                        FROM Opportunities
+                        JOIN Users ON opportunities.userID = Users.userID
+                        WHERE Users.username = %s;
+                        """, (username,))
             rows = cur.fetchall()
             opportunities = []
             for row in rows:
@@ -20,7 +54,7 @@ def get_shadows():
                 opportunities.append(opportunity)
             return opportunities
     except Exception as e:
-        raise RuntimeError(f"Failed to fetch shadows from database: {e}")
+        raise RuntimeError(f"Failed to fetch shadows for this username: {e}")
     finally:
         if conn:
             conn.close()
@@ -32,7 +66,15 @@ def get_shadow(shadow_id):
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT * FROM opportunities WHERE opportunityID = %s;
+                SELECT
+                opportunityID,
+                position,
+                job_description,
+                status,
+                location,
+                userID
+                FROM Opportunities
+                WHERE opportunityID = %s;
                 """, (shadow_id,))
             row = cur.fetchone()
             if row:
@@ -40,15 +82,13 @@ def get_shadow(shadow_id):
                     "opportunityID": row[0],
                     "position": row[1],
                     "job_description": row[2],
-                    "is_remote": row[3],
-                    "is_in_person": row[4],
-                    "status": row[5],
-                    "required_skills": row[6],
-                    "location": row[7]
+                    "status": row[3],
+                    "location": row[4],
+                    "userID": row[5]
                 }
                 return shadow
             else:
-                return ValueError("shadow not found")
+                raise ValueError("shadow not found")
     except Exception as e:
         raise RuntimeError(f"Failed to fetch shadow from database: {e}")
     finally:
@@ -64,6 +104,8 @@ def create_shadow(data):
     status = data.get("status")
     required_skills = data.get("required_skills")
     location = data.get("location")
+    # TODO: update when users can login and userID can be automatically passed
+    userID = 1
 
     try:
         conn = create_connection()
@@ -77,8 +119,9 @@ def create_shadow(data):
                 is_in_person,
                 status,
                 required_skills,
-                location)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                location,
+                userID)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 RETURNING opportunityID;
                 """,
                 (position,
@@ -87,7 +130,8 @@ def create_shadow(data):
                  is_in_person,
                  status,
                  required_skills,
-                 location)
+                 location,
+                 userID)
             )
             shadow_id = cur.fetchone()[0]
             conn.commit()
@@ -103,7 +147,6 @@ def create_shadow(data):
 
 
 def update_shadow(data, shadow_id):
-
     position = data.get("position")
     job_description = data.get("job_description")
     is_remote = data.get("is_remote")
@@ -152,7 +195,8 @@ def delete_shadow(shadow_id):
     try:
         conn = create_connection()
         with conn.cursor() as cur:
-            cur.execute("DELETE FROM opportunities WHERE opportunityID = %s;", (shadow_id,))
+            cur.execute("DELETE FROM opportunities WHERE opportunityID = %s;",
+                        (shadow_id,))
             conn.commit()
             return {
                 "message": f"shadow {shadow_id} deleted",

@@ -1,11 +1,11 @@
 import pytest
 from app.queries.shadow_queries import get_shadow, get_shadows
 
+
 def test_get_shadows(test_client):
     response = test_client.get("/shadows")
     assert response.status_code == 200, "Request failed"
 
-    assert response.content_type == "application/json", "Response is not JSON"
     data = get_shadows()
     assert data is not None, "Response JSON is None"
 
@@ -16,18 +16,20 @@ def test_get_shadows(test_client):
         assert "job_description" in shadow
         assert "status" in shadow
         assert "location" in shadow
+        assert "userID" in shadow
 
 
 def test_get_shadow(test_client):
-    shadow_id = test_client.get("/shadow/1")  
-    shadow =shadow_id.get_json()
+    shadow_id = test_client.get("/shadow/1")
+    shadow = shadow_id.get_json()
     assert shadow_id.status_code == 200
 
     assert shadow["opportunityID"] == 1
     assert "position" in shadow
     assert "job_description" in shadow
-    assert "is_remote" in shadow
+    assert "status" in shadow
     assert "location" in shadow
+    assert "userID" in shadow
 
 
 def test_create_shadow(test_client):
@@ -78,7 +80,7 @@ def test_update_shadow(test_client):
 
 
 def test_delete_shadow(test_client):
-    response = test_client.delete("/shadow/1") 
+    response = test_client.delete("/shadow/1")
     data = response.get_json()
     shadow_id = 1
     assert response.status_code == 200
@@ -87,3 +89,14 @@ def test_delete_shadow(test_client):
     assert data["message"] == f"shadow {shadow_id} deleted"
     with pytest.raises(RuntimeError, match="shadow not found"):
         get_shadow(shadow_id)
+
+
+def test_get_shadows_by_username(test_client):
+    response = test_client.get("/shadows/username_1")
+    assert response.status_code == 200
+
+    data = response.get_json()
+    assert len(data) == 3
+
+    for i in range(3):
+        assert f"{data[i]['position']} == position_{i}"

@@ -1,6 +1,6 @@
 '''Implements database access/posting methods for shadows page.'''
 from flask import request, render_template, Blueprint, jsonify
-from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow
+from queries.shadow_queries import get_shadows, get_shadow, create_shadow, update_shadow, delete_shadow, get_shadows_by_username
 
 shadow_bp = Blueprint("shadows", __name__)
 
@@ -13,6 +13,17 @@ def shadow():
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
 
+
+# TODO add this filter to the shadows page
+@shadow_bp.route('/shadows/<username>', methods=["GET"])
+def shadows_by_username(username):
+    try:
+        shadows = get_shadows_by_username(username)
+        return jsonify(shadows), 200
+    except RuntimeError as e:
+        return jsonify({"error": str(e)}), 500
+
+
 @shadow_bp.route("/shadow", methods=["POST"])
 def post_shadow():
     try:
@@ -21,6 +32,7 @@ def post_shadow():
         return jsonify(shadow), 201
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
+
 
 @shadow_bp.route("/shadow/<int:shadow_id>", methods=["GET", "PUT", "DELETE"])
 def get_one_shadow(shadow_id):

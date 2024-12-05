@@ -14,24 +14,25 @@ def test_get_messages(test_client):
         assert "name" in message
         assert "email" in message
         assert "message_content" in message
+        assert "userID" in message
 
 
-# def test_get_message(test_client):
-#     response = test_client.get("/message/1") 
-#     data = response.get_json()
-#     assert response.status_code == 200
-
-#     assert data["messageID"] == 1
-#     assert "name" in data
-#     assert "email" in data
-#     assert "message_content" in data
+def test_get_message(test_client):
+    response = test_client.get("/message/1")
+    data = response.get_json()
+    assert response.status_code == 200
+    assert data["messageID"] == 1
+    assert "name" in data
+    assert "email" in data
+    assert "message_content" in data
+    assert "userID" in data
 
 
 def test_create_message(test_client):
     new_message = {
         "name": "John Doe",
         "email": "johndoe@example.com",
-        "message_content": "This is a test message.",
+        "message_content": "This is a test message."
     }
 
     response = test_client.post("/message", json=new_message)
@@ -53,7 +54,7 @@ def test_update_message(test_client):
         "message_content": "This is an updated test message.",
     }
 
-    response = test_client.put("/message/1", json=updated_data) 
+    response = test_client.put("/message/1", json=updated_data)
     data = response.get_json()
     message_id = data["messageID"]
     assert response.status_code == 200
@@ -66,7 +67,7 @@ def test_update_message(test_client):
 
 
 def test_delete_message(test_client):
-    response = test_client.delete("/message/1") 
+    response = test_client.delete("/message/1")
     data = response.get_json()
     message_id = 1
     assert response.status_code == 200
@@ -74,3 +75,10 @@ def test_delete_message(test_client):
     assert data["message"] == f"Message {message_id} deleted"
     with pytest.raises(RuntimeError, match="message not found"):
         get_message(message_id)
+
+
+def test_get_messages_by_user(test_client):
+    response = test_client.get("/messages/1")
+    assert response.status_code == 200
+    data = response.get_json()
+    assert len(data) == 3

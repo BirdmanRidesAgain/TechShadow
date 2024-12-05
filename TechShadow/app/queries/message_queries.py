@@ -1,6 +1,5 @@
 '''Implements functions for handling/relaying methods to and from the database.'''
 from tsdb import create_connection
-from flask import jsonify
 
 
 def get_messages():
@@ -14,11 +13,42 @@ def get_messages():
                     "messageID": row[0],
                     "name": row[1],
                     "email": row[2],
-                    "message_content": row[3]
+                    "message_content": row[3],
+                    "userID": row[4],
                 } for row in rows]
                 return messages
     except Exception as e:
         raise RuntimeError(f"Failed to fetch messages from database: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+
+# TODO: integrate this for admins to see messages by users
+def get_messages_by_user(user_id):
+    try:
+        conn = create_connection()
+        with conn.cursor() as cur:
+            cur.execute("""
+                        SELECT
+                        messages.name,
+                        messages.email,
+                        messages.message_content
+                        FROM Messages
+                        WHERE Messages.userID = %s;
+                        """, (user_id,))
+            rows = cur.fetchall()
+            messages = []
+            for row in rows:
+                message = {
+                    "name": row[0],
+                    "email": row[1],
+                    "message_content": row[2]
+                }
+                messages.append(message)
+            return messages
+    except Exception as e:
+        raise RuntimeError(f"Failed to fetch messages for this userID: {e}")
     finally:
         if conn:
             conn.close()
@@ -39,6 +69,7 @@ def get_message(message_id):
                     "name": row[1],
                     "email": row[2],
                     "message_content": row[3],
+                    "userID": row[4]
                 }
                 return message
             else:
@@ -54,17 +85,18 @@ def create_message(data):
     name = data.get("name")
     email = data.get("email")
     message_content = data.get("message_content")
-
+    # TODO: update when users are able to login and pass this automatically
+    userID = 1
     try:
         conn = create_connection()
         with conn.cursor() as cur:
             cur.execute(
                 """
-                INSERT INTO messages (name, email, message_content)
-                VALUES (%s, %s, %s)
+                INSERT INTO messages (name, email, message_content, userID)
+                VALUES (%s, %s, %s, %s)
                 RETURNING messageID;
                 """,
-                (name, email, message_content)
+                (name, email, message_content, userID)
             )
             message_id = cur.fetchone()[0]
             conn.commit()
@@ -80,7 +112,6 @@ def create_message(data):
 
 
 def update_message(message_id, data):
-
     name = data.get("name")
     email = data.get("email")
     message_content = data.get("message_content")
