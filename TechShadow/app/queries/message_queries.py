@@ -87,7 +87,6 @@ def create_message(data):
     message_content = data.get("message_content")
     # TODO: update when users are able to login and pass this automatically
     userID = 1
-
     try:
         conn = create_connection()
         with conn.cursor() as cur:
