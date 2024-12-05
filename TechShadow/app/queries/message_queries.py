@@ -1,6 +1,5 @@
 '''Implements functions for handling/relaying methods to and from the database.'''
 from tsdb import create_connection
-from flask import jsonify
 
 
 def get_messages():
@@ -24,6 +23,7 @@ def get_messages():
         if conn:
             conn.close()
 
+
 # TODO: integrate this for admins to see messages by users
 def get_messages_by_user(user_id):
     try:
@@ -46,7 +46,6 @@ def get_messages_by_user(user_id):
                     "message_content": row[2]
                 }
                 messages.append(message)
-            print("messages", messages)
             return messages
     except Exception as e:
         raise RuntimeError(f"Failed to fetch messages for this userID: {e}")
@@ -114,7 +113,6 @@ def create_message(data):
 
 
 def update_message(message_id, data):
-
     name = data.get("name")
     email = data.get("email")
     message_content = data.get("message_content")

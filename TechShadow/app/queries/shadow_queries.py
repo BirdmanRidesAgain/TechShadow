@@ -147,7 +147,6 @@ def create_shadow(data):
 
 
 def update_shadow(data, shadow_id):
-
     position = data.get("position")
     job_description = data.get("job_description")
     is_remote = data.get("is_remote")
@@ -196,7 +195,8 @@ def delete_shadow(shadow_id):
     try:
         conn = create_connection()
         with conn.cursor() as cur:
-            cur.execute("DELETE FROM opportunities WHERE opportunityID = %s;", (shadow_id,))
+            cur.execute("DELETE FROM opportunities WHERE opportunityID = %s;",
+                        (shadow_id,))
             conn.commit()
             return {
                 "message": f"shadow {shadow_id} deleted",

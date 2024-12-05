@@ -23,6 +23,7 @@ def shadows_by_username(username):
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
 
+
 @shadow_bp.route("/shadow", methods=["POST"])
 def post_shadow():
     try:
@@ -31,6 +32,7 @@ def post_shadow():
         return jsonify(shadow), 201
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
+
 
 @shadow_bp.route("/shadow/<int:shadow_id>", methods=["GET", "PUT", "DELETE"])
 def get_one_shadow(shadow_id):

@@ -13,6 +13,7 @@ def get_all_messages():
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
 
+
 # TODO implement this for admin review of messages
 @message_bp.route("/messages/<user_id>", methods=["GET"])
 def get_messages_by_userid(user_id):

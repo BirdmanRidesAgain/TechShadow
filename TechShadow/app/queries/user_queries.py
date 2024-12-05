@@ -145,6 +145,7 @@ def delete_user(user_id):
             conn.close()
 
 
+#  TODO integrate into a drop down for filter once the front end is ready
 def get_user_dropdown():
     try:
         conn = create_connection()
@@ -157,7 +158,6 @@ def get_user_dropdown():
                 first = user[1][0]
                 last = user[2]
                 drop_down_list.append(f"{first.upper()}. {last[0].upper()}{last[1:]} ({username})")
-                print("fdjsfajdsklfjaskdljflsa;jfksdlfa", drop_down_list)
             return drop_down_list
     finally:
         if conn:
