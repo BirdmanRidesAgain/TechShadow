@@ -14,7 +14,7 @@
 TechShadow [Trello board](https://trello.com/b/UC5UqRxS/techshadow)
 
 ### Demo Video
-[Demo](https://www.youtube.com/watch?v=-rsEs4HWXeY_)
+[App Video Walkthrough](https://drive.google.com/file/d/1avmvqOQeuOn450OhxvgJ4ZE6oLhxESDt/view?usp=sharing)
 
 ### Version control repository link: 
 TechShadow [GitHub](https://github.com/BirdmanRidesAgain/TechShadow)
