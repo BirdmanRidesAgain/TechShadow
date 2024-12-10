@@ -10,6 +10,6 @@ def create_tables_route():
     return create_tables()
 
 
-@table_bp.route("/drop_tables")
-def drop_tables_route():
-    return drop_tables()
+# @table_bp.route("/drop_tables")
+# def drop_tables_route():
+#     return drop_tables()

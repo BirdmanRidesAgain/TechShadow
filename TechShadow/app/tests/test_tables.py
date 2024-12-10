@@ -3,21 +3,21 @@ from tsdb import create_connection
 from app.queries.tables_queries import create_tables, seed_test_tables
 
 
-def test_drop_tables(test_client):
-    try:
-        test_client.get("/drop_tables")
-        conn = create_connection()
-        with conn.cursor() as cur:
-            cur.execute("""
-                        SELECT tablename
-                        FROM pg_tables
-                        WHERE schemaname = 'public';
-                        """)
-            tables = cur.fetchall()
-            assert len(tables) == 0
-    finally:
-        if conn:
-            conn.close()
+# def test_drop_tables(test_client):
+#     try:
+#         test_client.get("/drop_tables")
+#         conn = create_connection()
+#         with conn.cursor() as cur:
+#             cur.execute("""
+#                         SELECT tablename
+#                         FROM pg_tables
+#                         WHERE schemaname = 'public';
+#                         """)
+#             tables = cur.fetchall()
+#             assert len(tables) == 0
+#     finally:
+#         if conn:
+#             conn.close()
 
 
 def test_create_tables():
